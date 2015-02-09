@@ -1,4 +1,4 @@
-
+﻿
 
 代码行数  --> 时间成本
 |               |
@@ -9,3 +9,6 @@
 Exampels
 1. Assembly  vs. C
 2. Spelling check in 21 lines Python
+
+
+what new  in 2.9 2015
