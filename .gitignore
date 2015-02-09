@@ -2,3 +2,5 @@
 *.exe
 *.project
 *.cproject
+*.settings
+
