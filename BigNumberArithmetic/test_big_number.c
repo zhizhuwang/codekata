@@ -8,16 +8,21 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
+#include <stdlib.h>
 #include "big_number_arithmetic.h"
 
 
 void assert_add(const char * left, const char * right, const char * expect)
 {
-	assert(strcmp(add(left, right), expect) == 0);
+	char *r = NULL;
+	assert(strcmp(r = add(left, right), expect) == 0);
+	free(r);
 }
 void test_add()
 {
 	assert_add("1", "1", "2");
+	assert_add("11", "23", "34");
+	assert_add("11", "123", "134");
 }
 int main()
 {
