@@ -8,24 +8,35 @@
 #include <string.h>
 #include <stdlib.h>
 
-static unsigned digit(const char * str, unsigned int pos)
+static unsigned get_digit(const char * str, unsigned int pos)
 {
 	if(pos >= strlen(str))
 		return 0;
 	return str[strlen(str) - pos - 1] - '0';
 }
+
 char * add(const char * left, const char * right)
 {
 	char *result = NULL;
 	int i = 0;
+	unsigned int sum = 0, carry_bit = 0;
 	unsigned int len = strlen(left) > strlen(right) ? strlen(left) : strlen(right);
-	result = (char *)malloc(len + 1);
+	unsigned int max_width = len + 1;
 
-	for(i=0; i<len; i++)
+	result = (char *)calloc(max_width + 1, sizeof(char));
+
+	for(i=0; i<max_width; i++)
 	{
-		result[len - i -1] = digit(left, i) + digit(right, i) + '0';
+		sum = get_digit(left, i) + get_digit(right, i) + carry_bit;
+
+		result[max_width - 1 - i] = sum % 10 + '0';
+		carry_bit = sum / 10;
 	}
-	result[len] = '\0';
+
+	if(result[0] == '0')
+		memmove(result, result + 1, max_width);
+
+	result[max_width] = '\0';
 
 	return result;
 

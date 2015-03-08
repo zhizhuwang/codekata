@@ -23,6 +23,8 @@ void test_add()
 	assert_add("1", "1", "2");
 	assert_add("11", "23", "34");
 	assert_add("11", "123", "134");
+
+//	assert_add("1", "9", "10");
 }
 int main()
 {
