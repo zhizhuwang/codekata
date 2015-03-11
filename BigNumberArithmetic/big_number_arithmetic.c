@@ -41,3 +41,21 @@ char * add(const char * left, const char * right)
 	return result;
 
 }
+
+
+char * sub(const char * left, const char * right)
+{
+	char * result = NULL;
+	unsigned int width = strlen(left);
+	unsigned int i = 0;
+
+	result = (char *)calloc(width+1, sizeof(char));
+
+	while(i < strlen(left))
+	{
+		result[width - i - 1] = get_digit(left, i) - get_digit(right, i) + '0';
+		i++;
+	}
+	result[width] = '\0';
+	return result;
+}
