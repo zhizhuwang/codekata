@@ -47,13 +47,16 @@ char * sub(const char * left, const char * right)
 {
 	char * result = NULL;
 	unsigned int width = strlen(left);
-	unsigned int i = 0;
+	unsigned int i = 0, borrow = 0;
+	int diff = 0;
 
 	result = (char *)calloc(width+1, sizeof(char));
 
 	while(i < strlen(left))
 	{
-		result[width - i - 1] = get_digit(left, i) - get_digit(right, i) + '0';
+		diff = get_digit(left, i) - borrow - get_digit(right, i);
+		borrow = (diff < 0 ? 1: 0);
+		result[width - i - 1] = diff + 10*borrow + '0';
 		i++;
 	}
 	result[width] = '\0';

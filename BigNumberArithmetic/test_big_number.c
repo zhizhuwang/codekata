@@ -40,6 +40,8 @@ void test_sub()
 {
 	assert_sub("3","1","2");
 	assert_sub("36","12","24");
+
+	assert_sub("12","3","09");
 }
 int main()
 {
