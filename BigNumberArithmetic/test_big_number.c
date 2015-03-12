@@ -30,6 +30,14 @@ void test_add()
 
 }
 
+void test_add_with_negative()
+{
+	assert_add("11", "-3", "08");
+	assert_add("-12", "36", "24");
+	assert_add("-12", "-36", "-48");
+}
+
+
 void assert_sub(const char * left, const char * right, const char * expect)
 {
 	char *r = NULL;
@@ -43,10 +51,14 @@ void test_sub()
 
 	assert_sub("12","3","09");
 }
+
+
 int main()
 {
 	test_add();
 	test_sub();
+
+	test_add_with_negative();
 
 	printf("hello world\n");
 	return 0;

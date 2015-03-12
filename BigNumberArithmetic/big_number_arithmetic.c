@@ -7,6 +7,7 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include "big_number_arithmetic.h"
 
 static unsigned get_digit(const char * str, unsigned int pos)
 {
@@ -15,7 +16,7 @@ static unsigned get_digit(const char * str, unsigned int pos)
 	return str[strlen(str) - pos - 1] - '0';
 }
 
-char * add(const char * left, const char * right)
+static char * add_internal(const char * left, const char * right)
 {
 	char *result = NULL;
 	int i = 0;
@@ -42,7 +43,37 @@ char * add(const char * left, const char * right)
 
 }
 
+unsigned int isPositive(const char * s)
+{
+	return s[0] <= '9' && s[0] >= '0';
+}
+unsigned int isNegative(const char * s)
+{
+	return s[0] == '-';
+}
 
+static char * negative(char * s)
+{
+	char * result = calloc(strlen(s)+2, sizeof(char));
+	result[0] = '-';
+	memcpy(result+1, s, strlen(s));
+	return result;
+}
+char * add(const char * left, const char * right)
+{
+	if(isPositive(left) && isNegative(right))
+		return sub(left, right+1);
+
+	else if(isNegative(left) && isPositive(right))
+		return sub(right, left+1);
+
+	else if(isNegative(left) && isNegative(right))
+		return negative(
+				add(right+1, left+1)
+				);
+	else
+		return add_internal(left, right);
+}
 char * sub(const char * left, const char * right)
 {
 	char * result = NULL;
