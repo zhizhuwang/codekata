@@ -35,6 +35,9 @@ void test_add_with_negative()
 	assert_add("11", "-3", "08");
 	assert_add("-12", "36", "24");
 	assert_add("-12", "-36", "-48");
+
+	assert_add("11", "-432", "-421");
+	assert_add("-11", "4", "-07");
 }
 
 
@@ -52,6 +55,16 @@ void test_sub()
 	assert_sub("12","3","09");
 }
 
+void test_sub_with_negative()
+{
+	assert_sub("3","-1","4");
+	assert_sub("-3","-7","4");
+	assert_sub("-3","1","-4");
+
+	assert_sub("-3","24","-27");
+
+	assert_sub("-6","-2","-4");
+}
 
 int main()
 {
@@ -59,6 +72,8 @@ int main()
 	test_sub();
 
 	test_add_with_negative();
+
+	test_sub_with_negative();
 
 	printf("hello world\n");
 	return 0;

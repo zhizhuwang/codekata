@@ -51,30 +51,34 @@ unsigned int isNegative(const char * s)
 {
 	return s[0] == '-';
 }
-
+unsigned int great_than_by_abs(const char * l, const char * r)
+{
+	return strlen(l)>strlen(r) ||
+			(strlen(l) == strlen(r) && strcmp(l,r) > 0);
+}
 static char * negative(char * s)
 {
 	char * result = calloc(strlen(s)+2, sizeof(char));
 	result[0] = '-';
 	memcpy(result+1, s, strlen(s));
+	free(s);
 	return result;
 }
 char * add(const char * left, const char * right)
 {
 	if(isPositive(left) && isNegative(right))
-		return sub(left, right+1);
+	{
+		if(great_than_by_abs(left, right+1)) return sub(left, right+1);
+		else return negative(sub(right+1, left));
+	}
+	/* (-A) + B = B + (-A)*/
+	if(isNegative(left) && isPositive(right))  return add(right, left);
 
-	else if(isNegative(left) && isPositive(right))
-		return sub(right, left+1);
+	if(isNegative(left) && isNegative(right))   return negative( add(right+1, left+1));
 
-	else if(isNegative(left) && isNegative(right))
-		return negative(
-				add(right+1, left+1)
-				);
-	else
-		return add_internal(left, right);
+	else return add_internal(left, right);
 }
-char * sub(const char * left, const char * right)
+static char * sub_internal(const char * left, const char * right)
 {
 	char * result = NULL;
 	unsigned int width = strlen(left);
@@ -92,4 +96,20 @@ char * sub(const char * left, const char * right)
 	}
 	result[width] = '\0';
 	return result;
+}
+
+
+char * sub(const char * left, const char * right)
+{
+	if(isPositive(left) && isNegative(right))  return add(left, right+1);
+
+	if(isNegative(left) && isNegative(right))
+	{
+		if(great_than_by_abs(left+1, right+1)) return negative(sub(left+1,right+1));
+		else return sub(right+1, left+1);
+	}
+
+	if(isNegative(left) && isPositive(right))  return negative(add(left+1, right));
+	else
+		return sub_internal(left, right);
 }
