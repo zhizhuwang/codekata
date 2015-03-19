@@ -66,6 +66,22 @@ void test_sub_with_negative()
 	assert_sub("-6","-2","-4");
 }
 
+
+void assert_mul(const char * left, const char * right, const char * expect)
+{
+	char *r = NULL;
+	assert(strcmp(r = mul(left, right), expect) == 0);
+	free(r);
+}
+void test_mul()
+{
+	assert_mul("3456","2","6912");
+	assert_mul("3456","0","0");
+	assert_mul("3456","23","79488");
+
+}
+
+
 int main()
 {
 	test_add();
@@ -74,6 +90,9 @@ int main()
 	test_add_with_negative();
 
 	test_sub_with_negative();
+
+	test_mul();
+
 
 	printf("hello world\n");
 	return 0;

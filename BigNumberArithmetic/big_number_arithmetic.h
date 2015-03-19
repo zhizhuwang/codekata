@@ -10,5 +10,6 @@
 
 char * add(const char *, const char *);
 char * sub(const char *, const char *);
+char * mul(const char *, const char *);
 
 #endif /* BIG_NUMBER_ARITHMETIC_H_ */

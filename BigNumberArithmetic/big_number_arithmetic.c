@@ -113,3 +113,42 @@ char * sub(const char * left, const char * right)
 	else
 		return sub_internal(left, right);
 }
+
+
+char * mul_by_x(const char * s, char x)
+{
+	char c;
+	char * tmp = NULL;
+	char *mul_of_x = add("0", "0");
+	for(c = '0'; c < x; c++)
+	{
+		tmp = add(s, mul_of_x);
+		free(mul_of_x);
+		mul_of_x = tmp;
+	}
+	return mul_of_x;
+}
+char * mul_of_ten( char * s)
+{
+	return mul_by_x(s, '0'+10);
+}
+char * mul(const char * left, const char * right)
+{
+	char * acc = NULL;
+	char * mul_of_x = NULL;
+	char  *tmp2 = NULL, *tmp3 = NULL;
+	int i;
+
+	acc = add("0", "0");
+	for(i = 0; i<strlen(right); i++)
+	{
+		tmp3 = mul_of_ten(acc);
+		free(acc);
+		acc= tmp3;
+		mul_of_x = mul_by_x(left, right[i]);
+		tmp2 = add(mul_of_x, acc);
+		free(acc);
+		acc = tmp2;
+	}
+	return acc;
+}
