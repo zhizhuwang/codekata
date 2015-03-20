@@ -43,11 +43,11 @@ static char * add_internal(const char * left, const char * right)
 
 }
 
-unsigned int isPositive(const char * s)
+unsigned int is_positive(const char * s)
 {
 	return s[0] <= '9' && s[0] >= '0';
 }
-unsigned int isNegative(const char * s)
+unsigned int is_negative(const char * s)
 {
 	return s[0] == '-';
 }
@@ -66,15 +66,15 @@ static char * negative(char * s)
 }
 char * add(const char * left, const char * right)
 {
-	if(isPositive(left) && isNegative(right))
+	if(is_positive(left) && is_negative(right))
 	{
 		if(great_than_by_abs(left, right+1)) return sub(left, right+1);
 		else return negative(sub(right+1, left));
 	}
 	/* (-A) + B = B + (-A)*/
-	if(isNegative(left) && isPositive(right))  return add(right, left);
+	if(is_negative(left) && is_positive(right))  return add(right, left);
 
-	if(isNegative(left) && isNegative(right))   return negative( add(right+1, left+1));
+	if(is_negative(left) && is_negative(right))   return negative( add(right+1, left+1));
 
 	else return add_internal(left, right);
 }
@@ -101,21 +101,21 @@ static char * sub_internal(const char * left, const char * right)
 
 char * sub(const char * left, const char * right)
 {
-	if(isPositive(left) && isNegative(right))  return add(left, right+1);
+	if(is_positive(left) && is_negative(right))  return add(left, right+1);
 
-	if(isNegative(left) && isNegative(right))
+	if(is_negative(left) && is_negative(right))
 	{
 		if(great_than_by_abs(left+1, right+1)) return negative(sub(left+1,right+1));
 		else return sub(right+1, left+1);
 	}
 
-	if(isNegative(left) && isPositive(right))  return negative(add(left+1, right));
+	if(is_negative(left) && is_positive(right))  return negative(add(left+1, right));
 	else
 		return sub_internal(left, right);
 }
 
 
-char * mul_by_x(const char * s, char x)
+static char * mul_by_x(const char * s, char x)
 {
 	char c;
 	char * tmp = NULL;
@@ -128,27 +128,38 @@ char * mul_by_x(const char * s, char x)
 	}
 	return mul_of_x;
 }
-char * mul_of_ten( char * s)
+static char * mul_by_ten( char * s)
 {
 	return mul_by_x(s, '0'+10);
 }
-char * mul(const char * left, const char * right)
+static char * mul_internal(const char * left, const char * right)
 {
 	char * acc = NULL;
 	char * mul_of_x = NULL;
-	char  *tmp2 = NULL, *tmp3 = NULL;
+	char  *tmp = NULL;
 	int i;
 
 	acc = add("0", "0");
 	for(i = 0; i<strlen(right); i++)
 	{
-		tmp3 = mul_of_ten(acc);
-		free(acc);
-		acc= tmp3;
+		tmp = mul_by_ten(acc);  free(acc);  acc= tmp;
+
 		mul_of_x = mul_by_x(left, right[i]);
-		tmp2 = add(mul_of_x, acc);
-		free(acc);
-		acc = tmp2;
+
+		tmp = add(mul_of_x, acc); free(acc); acc = tmp;
 	}
 	return acc;
+}
+
+char * mul(const char * left, const char * right)
+{
+	if(is_positive(left) && is_positive(right))    return mul_internal(left, right);
+
+	if(is_positive(left) && is_negative(right))    return negative(mul(left, right + 1));
+
+	if(is_negative(left) && is_positive(right))    return negative(mul(left + 1, right));
+
+	if(is_negative(left) && is_negative(right))    return mul(left + 1, right + 1);
+
+	return NULL;
 }
