@@ -14,5 +14,5 @@ coding practice
 * TrailingFactorialZeros.
 
     Find the number of trailing zeros of a Factorial.
-    
-*Quick Sort
+
+* Quick Sort
