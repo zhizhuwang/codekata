@@ -2,16 +2,19 @@
 #include <assert.h>
 
 
+int num(const char * s)
+{
+	return *s - '0';
+}
 int add(const char *s)
 {
-	int i = *s - '0';
-	s ++;
+	int n = num(s++);
 	if(*s == '+')
 	{
 		s ++;
-		i += *s - '0';
+		n += num(s);
 	}
-	return i;
+	return n;
 }
 void test_add()
 {
