@@ -17,14 +17,14 @@ void QSort(int s[], int start, int end)
 	{
 		return ;
 	}
-	while(i < j)
+	while(i <= j)
 	{
-		while(i<j && s[i] <= pivot)
+		while(i<=j && s[i] <= pivot)
 		{
 			s[i-1] = s[i];
 			i ++;
 		}
-		while(i<j && s[j] >= pivot)
+		while(i<=j && s[j] >= pivot)
 		{
 			j --;
 		}
@@ -106,6 +106,15 @@ void testArrayWithMultiple4() {
 		printf("%d ", a[i]);
 	printf("\n");
 }
+
+void testArrayWithMultiple5() {
+	int i;
+	int a[] = { 38,27,13 };
+	QSort(a, 0, sizeof(a) / sizeof(int) - 1);
+	for (i = 0; i < sizeof(a) / sizeof(int); i++)
+		printf("%d ", a[i]);
+	printf("\n");
+}
 int main()
 {
 	testArrayInAscendingOrder();
@@ -113,6 +122,7 @@ int main()
 	testArrayWithMultiple2();
 	testArrayWithMultiple3();
 	testArrayWithMultiple4();
+	testArrayWithMultiple5();
 
 	printf("hello world\n");
 	return 0;
