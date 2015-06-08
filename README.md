@@ -16,3 +16,5 @@ coding practice
     Find the number of trailing zeros of a Factorial.
 
 * Quick Sort
+
+	(http://wwwx.cs.unc.edu/~zhew/Leetcoder/)
