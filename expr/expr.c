@@ -1,26 +1,51 @@
 #include <stdio.h>
 #include <assert.h>
 
+typedef struct context{
+	const char * str;
+	unsigned int pos;
+}Context;
 
-int num(const char * s)
+typedef struct result{
+	Context ctx;
+	int value;
+}Result;
+
+Result num(Context * ctx)
 {
-	return *s - '0';
+	Result r;
+	r.value = ctx->str[ctx->pos++] - '0';
+	r.ctx = *ctx;
+	return r;
 }
-int add(const char *s)
+
+Result add(Context * ctx)
 {
-	int n = num(s++);
-	while(*s == '+')
+	int v = 0;
+	Result r = num(ctx);
+
+	v = r.value;
+	while(r.ctx.str[r.ctx.pos] == '+')
 	{
-		s ++;
-		n += num(s++);
+		r.ctx.pos ++;
+		r = num(&r.ctx);
+		v += r.value;
 	}
-	return n;
+	r.value = v;
+	return r;
 }
+int exprAdd(const char *s)
+{
+	Context ctx = {s, 0};
+	return add(&ctx).value;
+}
+
 void test_add()
 {
-	assert(add("1") == 1);
-	assert(add("1+2") == 1+2);
-	assert(add("1+2+3") == 1+2+3);
+	assert(exprAdd("1") == 1);
+	assert(exprAdd("1+2") == 1+2);
+	assert(exprAdd("1+2+3") == 1+2+3);
+	assert(exprAdd("1+2+3+4") == 1+2+3+4);
 }
 int main()
 {
