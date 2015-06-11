@@ -9,10 +9,10 @@ int num(const char * s)
 int add(const char *s)
 {
 	int n = num(s++);
-	if(*s == '+')
+	while(*s == '+')
 	{
 		s ++;
-		n += num(s);
+		n += num(s++);
 	}
 	return n;
 }
@@ -20,6 +20,7 @@ void test_add()
 {
 	assert(add("1") == 1);
 	assert(add("1+2") == 1+2);
+	assert(add("1+2+3") == 1+2+3);
 }
 int main()
 {
