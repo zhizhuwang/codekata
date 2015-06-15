@@ -19,12 +19,12 @@ Result num(Context * ctx)
 	return r;
 }
 
-Result add(Context * ctx)
+Result addSub(Context * ctx)
 {
 	int v = 0;
 	char optr;
-	Result r = num(ctx);
 
+	Result r = num(ctx);
 	v = r.value;
 	while((optr = r.ctx.str[r.ctx.pos]) == '+' ||
 			(optr = r.ctx.str[r.ctx.pos]) == '-')
@@ -42,26 +42,23 @@ Result add(Context * ctx)
 int exprAddSub(const char *s)
 {
 	Context ctx = {s, 0};
-	return add(&ctx).value;
+	return addSub(&ctx).value;
 }
 
-void test_add()
+void test_add_sub()
 {
 	assert(exprAddSub("1") == 1);
 	assert(exprAddSub("1+2") == 1+2);
 	assert(exprAddSub("1+2+3") == 1+2+3);
 	assert(exprAddSub("1+2+3+4") == 1+2+3+4);
-}
-
-void test_sub()
-{
 	assert(exprAddSub("1-2") == 1-2);
 	assert(exprAddSub("1-2-3") == 1-2-3);
+	assert(exprAddSub("1-2+3") == 1-2+3);
 }
+
 int main()
 {
-	test_add();
-	test_sub();
+	test_add_sub();
 	printf("hello world\n");
 	return 0;
 }
