@@ -48,19 +48,24 @@ int exprAddSub(const char *s)
 Result mul(Context * ctx)
 {
 	int v = 0;
+	char optr;
 	Result r = num(ctx);
 
 	v = r.value;
-	while(r.ctx.str[r.ctx.pos] == '*')
+	while((optr = r.ctx.str[r.ctx.pos]) == '*'||
+			(optr = r.ctx.str[r.ctx.pos]) == '/')
 	{
 		r.ctx.pos ++;
 		r = num(&r.ctx);
-		v = v * r.value;
+		if(optr == '*')
+			v = v * r.value;
+		if(optr == '/')
+			v = v / r.value;
 	}
 	r.value = v;
 	return r;
 }
-int exprMul(const char * s)
+int exprMulDiv(const char * s)
 {
 	Context ctx = {s, 0};
 	return mul(&ctx).value;
@@ -77,15 +82,18 @@ void test_add_sub()
 }
 
 
-void test_mul()
+void test_mul_div()
 {
-	assert(exprMul("3*4") == 3*4);
-	assert(exprMul("3*4*5") == 3*4*5);
+	assert(exprMulDiv("3*4") == 3*4);
+	assert(exprMulDiv("3*4*5") == 3*4*5);
+
+	assert(exprMulDiv("4/5") == 4/5);
 }
+
 int main()
 {
 	test_add_sub();
-	test_mul();
+	test_mul_div();
 	printf("hello world\n");
 	return 0;
 }
