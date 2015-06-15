@@ -51,10 +51,13 @@ Result mul(Context * ctx)
 	Result r = num(ctx);
 
 	v = r.value;
-	r.ctx.pos ++;
-	v = v * num(&r.ctx).value;
+	while(r.ctx.str[r.ctx.pos] == '*')
+	{
+		r.ctx.pos ++;
+		r = num(&r.ctx);
+		v = v * r.value;
+	}
 	r.value = v;
-
 	return r;
 }
 int exprMul(const char * s)
@@ -77,6 +80,7 @@ void test_add_sub()
 void test_mul()
 {
 	assert(exprMul("3*4") == 3*4);
+	assert(exprMul("3*4*5") == 3*4*5);
 }
 int main()
 {
