@@ -45,6 +45,23 @@ int exprAddSub(const char *s)
 	return addSub(&ctx).value;
 }
 
+Result mul(Context * ctx)
+{
+	int v = 0;
+	Result r = num(ctx);
+
+	v = r.value;
+	r.ctx.pos ++;
+	v = v * num(&r.ctx).value;
+	r.value = v;
+
+	return r;
+}
+int exprMul(const char * s)
+{
+	Context ctx = {s, 0};
+	return mul(&ctx).value;
+}
 void test_add_sub()
 {
 	assert(exprAddSub("1") == 1);
@@ -56,9 +73,15 @@ void test_add_sub()
 	assert(exprAddSub("1-2+3") == 1-2+3);
 }
 
+
+void test_mul()
+{
+	assert(exprMul("3*4") == 3*4);
+}
 int main()
 {
 	test_add_sub();
+	test_mul();
 	printf("hello world\n");
 	return 0;
 }
