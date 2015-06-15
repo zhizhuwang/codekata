@@ -88,6 +88,9 @@ void test_mul_div()
 	assert(exprMulDiv("3*4*5") == 3*4*5);
 
 	assert(exprMulDiv("4/5") == 4/5);
+	assert(exprMulDiv("6/3/2") == 6/3/2);
+
+	assert(exprMulDiv("6/3*2") == 6/3*2);
 }
 
 int main()
