@@ -39,13 +39,7 @@ Result add(Context * ctx)
 	r.value = v;
 	return r;
 }
-int exprAdd(const char *s)
-{
-	Context ctx = {s, 0};
-	return add(&ctx).value;
-}
-
-int exprSub(const char *s)
+int exprAddSub(const char *s)
 {
 	Context ctx = {s, 0};
 	return add(&ctx).value;
@@ -53,16 +47,16 @@ int exprSub(const char *s)
 
 void test_add()
 {
-	assert(exprAdd("1") == 1);
-	assert(exprAdd("1+2") == 1+2);
-	assert(exprAdd("1+2+3") == 1+2+3);
-	assert(exprAdd("1+2+3+4") == 1+2+3+4);
+	assert(exprAddSub("1") == 1);
+	assert(exprAddSub("1+2") == 1+2);
+	assert(exprAddSub("1+2+3") == 1+2+3);
+	assert(exprAddSub("1+2+3+4") == 1+2+3+4);
 }
 
 void test_sub()
 {
-	assert(exprSub("1-2") == 1-2);
-	assert(exprSub("1-2-3") == 1-2-3);
+	assert(exprAddSub("1-2") == 1-2);
+	assert(exprAddSub("1-2-3") == 1-2-3);
 }
 int main()
 {
