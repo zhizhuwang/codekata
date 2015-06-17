@@ -19,6 +19,6 @@ coding practice
 
 	(http://wwwx.cs.unc.edu/~zhew/Leetcoder/)
 	
-× Expr
-    
+* Expr
+
     Evaluate the string expression, which is combined with single digit positive integers and arithmetic operations including `+ - * / ( ) `
