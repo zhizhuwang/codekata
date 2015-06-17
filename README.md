@@ -21,4 +21,4 @@ coding practice
 	
 * Expr
 
-    Evaluate the string expression, which is combined with single digit positive integers and arithmetic operations including `+ - * / ( ) `
+    Evaluate the string expression, which is combined with single digit positive integers and arithmetic operators including `+ - * / ( ) `
