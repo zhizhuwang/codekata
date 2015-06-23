@@ -29,24 +29,21 @@ int isMulDiv(char optr)
 {
 	return optr == '*' || optr == '/';
 }
-Result addSub(Context * ctx)
+int calc(unsigned int left, char optr, unsigned int right)
 {
 	int v = 0;
-	char optr;
-
-	Result r = num(ctx);
-	v = r.value;
-	while(isAddSub(optr = r.ctx.str[r.ctx.pos]))
+	switch(optr)
 	{
-		r.ctx.pos ++;
-		r = num(&r.ctx);
-		if(optr == '+')
-			v += r.value;
-		if(optr == '-')
-			v -= r.value;
+	case '+':
+		v = left + right; break;
+	case '-':
+		v = left - right; break;
+	case '*':
+		v = left * right; break;
+	case '/':
+		v = left / right; break;
 	}
-	r.value = v;
-	return r;
+	return v;
 }
 Result chain(Context * ctx, OptrFun fp)
 {
@@ -59,14 +56,7 @@ Result chain(Context * ctx, OptrFun fp)
 	{
 		r.ctx.pos ++;
 		r = num(&r.ctx);
-		if(optr == '+')
-			v += r.value;
-		if(optr == '-')
-			v -= r.value;
-		if(optr == '*')
-			v = v * r.value;
-		if(optr == '/')
-			v = v / r.value;
+		v = calc(v, optr, r.value);
 	}
 	r.value = v;
 	return r;
@@ -74,33 +64,12 @@ Result chain(Context * ctx, OptrFun fp)
 int exprAddSub(const char *s)
 {
 	Context ctx = {s, 0};
-//	return addSub(&ctx).value;
 	return chain(&ctx, isAddSub).value;
 }
 
-Result mulDiv(Context * ctx)
-{
-	int v = 0;
-	char optr;
-	Result r = num(ctx);
-
-	v = r.value;
-	while(isMulDiv(optr = r.ctx.str[r.ctx.pos]))
-	{
-		r.ctx.pos ++;
-		r = num(&r.ctx);
-		if(optr == '*')
-			v = v * r.value;
-		if(optr == '/')
-			v = v / r.value;
-	}
-	r.value = v;
-	return r;
-}
 int exprMulDiv(const char * s)
 {
 	Context ctx = {s, 0};
-//	return mulDiv(&ctx).value;
 	return chain(&ctx, isMulDiv).value;
 }
 void test_add_sub()
