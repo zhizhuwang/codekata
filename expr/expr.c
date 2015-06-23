@@ -19,6 +19,14 @@ Result num(Context * ctx)
 	return r;
 }
 
+int isAddSub(char optr)
+{
+	return optr == '+' || optr == '-';
+}
+int isMulDiv(char optr)
+{
+	return optr == '*' || optr == '/';
+}
 Result addSub(Context * ctx)
 {
 	int v = 0;
@@ -26,8 +34,7 @@ Result addSub(Context * ctx)
 
 	Result r = num(ctx);
 	v = r.value;
-	while((optr = r.ctx.str[r.ctx.pos]) == '+' ||
-			(optr = r.ctx.str[r.ctx.pos]) == '-')
+	while(isAddSub(optr = r.ctx.str[r.ctx.pos]))
 	{
 		r.ctx.pos ++;
 		r = num(&r.ctx);
@@ -45,15 +52,14 @@ int exprAddSub(const char *s)
 	return addSub(&ctx).value;
 }
 
-Result mul(Context * ctx)
+Result mulDiv(Context * ctx)
 {
 	int v = 0;
 	char optr;
 	Result r = num(ctx);
 
 	v = r.value;
-	while((optr = r.ctx.str[r.ctx.pos]) == '*'||
-			(optr = r.ctx.str[r.ctx.pos]) == '/')
+	while(isMulDiv(optr = r.ctx.str[r.ctx.pos]))
 	{
 		r.ctx.pos ++;
 		r = num(&r.ctx);
@@ -68,7 +74,7 @@ Result mul(Context * ctx)
 int exprMulDiv(const char * s)
 {
 	Context ctx = {s, 0};
-	return mul(&ctx).value;
+	return mulDiv(&ctx).value;
 }
 void test_add_sub()
 {
