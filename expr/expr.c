@@ -11,6 +11,8 @@ typedef struct result{
 	int value;
 }Result;
 
+typedef int (*OptrFun)(char optr);
+
 Result num(Context * ctx)
 {
 	Result r;
@@ -46,10 +48,34 @@ Result addSub(Context * ctx)
 	r.value = v;
 	return r;
 }
+Result chain(Context * ctx, OptrFun fp)
+{
+	int v = 0;
+	char optr;
+
+	Result r = num(ctx);
+	v = r.value;
+	while(fp(optr = r.ctx.str[r.ctx.pos]))
+	{
+		r.ctx.pos ++;
+		r = num(&r.ctx);
+		if(optr == '+')
+			v += r.value;
+		if(optr == '-')
+			v -= r.value;
+		if(optr == '*')
+			v = v * r.value;
+		if(optr == '/')
+			v = v / r.value;
+	}
+	r.value = v;
+	return r;
+}
 int exprAddSub(const char *s)
 {
 	Context ctx = {s, 0};
-	return addSub(&ctx).value;
+//	return addSub(&ctx).value;
+	return chain(&ctx, isAddSub).value;
 }
 
 Result mulDiv(Context * ctx)
@@ -74,7 +100,8 @@ Result mulDiv(Context * ctx)
 int exprMulDiv(const char * s)
 {
 	Context ctx = {s, 0};
-	return mulDiv(&ctx).value;
+//	return mulDiv(&ctx).value;
+	return chain(&ctx, isMulDiv).value;
 }
 void test_add_sub()
 {
