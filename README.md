@@ -31,3 +31,8 @@ coding practice
     [Martin Fowler](http://www.martinfowler.com/articles/injection.html)
     
     [Strategy Pattern](https://en.wikipedia.org/wiki/Strategy_pattern)
+
+
+* Design Patterns
+
+    (https://en.wikibooks.org/wiki/Computer_Science_Design_Patterns)
