@@ -27,12 +27,9 @@ coding practice
 * Dependency Injection
 
     [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection#cite_note-3)
-    
     [Martin Fowler](http://www.martinfowler.com/articles/injection.html)
-    
     [Strategy Pattern](https://en.wikipedia.org/wiki/Strategy_pattern)
 
 
 * Design Patterns
-
     (https://en.wikibooks.org/wiki/Computer_Science_Design_Patterns)
