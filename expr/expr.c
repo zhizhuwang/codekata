@@ -78,7 +78,8 @@ Result addMul(Context * ctx)
 	int v = 0;
 	char optr;
 
-	Result r = num(ctx);
+//	Result r = num(ctx);
+	Result r = chain(ctx,isMulDiv);
 	v = r.value;
 	while((optr = r.ctx.str[r.ctx.pos]) == '+')
 	{
