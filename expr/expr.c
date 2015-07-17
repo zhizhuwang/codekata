@@ -94,12 +94,6 @@ int exprAddMul(const char * s)
 	Context ctx = {s, 0};
 	return addMul(&ctx).value;
 }
-
-int exprMulAdd(const char * s)
-{
-	Context ctx = {s, 0};
-	return addMul(&ctx).value;
-}
 void test_add_sub()
 {
 	assert(exprAddSub("1") == 1);
@@ -127,7 +121,8 @@ void test_add_mul()
 {
 	assert(exprAddMul("1+2*4") == 1+2*4);
 	assert(exprAddMul("1+2*4+5*6") == 1+2*4+5*6);
-	assert(exprMulAdd("1*2+4") == 1*2+4);
+	assert(exprAddMul("1*2+4") == 1*2+4);
+	assert(exprAddMul("1*2+4*5+6") == 1*2+4*5+6);
 }
 
 int main()
