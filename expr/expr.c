@@ -73,14 +73,14 @@ int exprMulDiv(const char * s)
 	return chain(&ctx, isMulDiv).value;
 }
 
-Result addMul(Context * ctx)
+Result addMul(Context * ctx, OptrFun fp)
 {
 	int v = 0;
 	char optr;
 
 	Result r = chain(ctx,isMulDiv);
 	v = r.value;
-	while((optr = r.ctx.str[r.ctx.pos]) == '+')
+	while(fp(optr = r.ctx.str[r.ctx.pos]))
 	{
 		r.ctx.pos ++;
 		r = chain(&r.ctx, isMulDiv);
@@ -92,7 +92,7 @@ Result addMul(Context * ctx)
 int exprAddMul(const char * s)
 {
 	Context ctx = {s, 0};
-	return addMul(&ctx).value;
+	return addMul(&ctx, isAddSub).value;
 }
 void test_add_sub()
 {
