@@ -72,6 +72,28 @@ int exprMulDiv(const char * s)
 	Context ctx = {s, 0};
 	return chain(&ctx, isMulDiv).value;
 }
+
+Result addMul(Context * ctx)
+{
+	int v = 0;
+	char optr;
+
+	Result r = num(ctx);
+	v = r.value;
+	if((optr = r.ctx.str[r.ctx.pos]) == '+')
+	{
+		r.ctx.pos ++;
+		r = chain(&r.ctx, isMulDiv);
+		v = calc(v, optr, r.value);
+	}
+	r.value = v;
+	return r;
+}
+int exprAddMul(const char * s)
+{
+	Context ctx = {s, 0};
+	return addMul(&ctx).value;
+}
 void test_add_sub()
 {
 	assert(exprAddSub("1") == 1);
@@ -95,10 +117,16 @@ void test_mul_div()
 	assert(exprMulDiv("6/3*2") == 6/3*2);
 }
 
+void test_add_mul()
+{
+	assert(exprAddMul("1+2*4") == 1+2*4);
+}
+
 int main()
 {
 	test_add_sub();
 	test_mul_div();
+	test_add_mul();
 	printf("hello world\n");
 	return 0;
 }
