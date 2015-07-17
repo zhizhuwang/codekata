@@ -89,10 +89,32 @@ Result addMul(Context * ctx)
 	r.value = v;
 	return r;
 }
+Result mulAdd(Context * ctx)
+{
+	int v = 0;
+	char optr;
+
+	Result r = chain(ctx, isMulDiv);
+	v = r.value;
+	while((optr = r.ctx.str[r.ctx.pos]) == '+')
+	{
+		r.ctx.pos ++;
+		r = chain(&r.ctx, isMulDiv);
+		v = calc(v, optr, r.value);
+	}
+	r.value = v;
+	return r;
+}
 int exprAddMul(const char * s)
 {
 	Context ctx = {s, 0};
 	return addMul(&ctx).value;
+}
+
+int exprMulAdd(const char * s)
+{
+	Context ctx = {s, 0};
+	return mulAdd(&ctx).value;
 }
 void test_add_sub()
 {
@@ -121,6 +143,7 @@ void test_add_mul()
 {
 	assert(exprAddMul("1+2*4") == 1+2*4);
 	assert(exprAddMul("1+2*4+5*6") == 1+2*4+5*6);
+	assert(exprMulAdd("1*2+4") == 1*2+4);
 }
 
 int main()
