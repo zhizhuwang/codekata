@@ -80,7 +80,7 @@ Result addMul(Context * ctx)
 
 	Result r = num(ctx);
 	v = r.value;
-	if((optr = r.ctx.str[r.ctx.pos]) == '+')
+	while((optr = r.ctx.str[r.ctx.pos]) == '+')
 	{
 		r.ctx.pos ++;
 		r = chain(&r.ctx, isMulDiv);
@@ -120,6 +120,7 @@ void test_mul_div()
 void test_add_mul()
 {
 	assert(exprAddMul("1+2*4") == 1+2*4);
+	assert(exprAddMul("1+2*4+5*6") == 1+2*4+5*6);
 }
 
 int main()
