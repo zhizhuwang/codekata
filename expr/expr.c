@@ -47,17 +47,6 @@ int calc(unsigned int left, char optr, unsigned int right)
 	}
 	return v;
 }
-int exprAddSub(const char *s)
-{
-	Context ctx = {s, 0};
-	return mixChain(&ctx, isAddSub, num).value;
-}
-
-int exprMulDiv(const char * s)
-{
-	Context ctx = {s, 0};
-	return mixChain(&ctx, isMulDiv, num).value;
-}
 
 Result mulDiv(Context * ctx)
 {
@@ -80,44 +69,55 @@ Result mixChain(Context * ctx, OptrFun optrFun, StartFun startFun)
 	r.value = v;
 	return r;
 }
-int exprAddMul(const char * s)
+int exprAddSub(const char *s)
 {
 	Context ctx = {s, 0};
-//	return addMul(&ctx, isAddSub).value;
+	return mixChain(&ctx, isAddSub, mulDiv).value;
+}
+
+int exprMulDiv(const char * s)
+{
+	Context ctx = {s, 0};
+	return mixChain(&ctx, isAddSub, mulDiv).value;
+
+}
+int expr(const char * s)
+{
+	Context ctx = {s, 0};
 	return mixChain(&ctx,isAddSub, mulDiv).value;
 }
 void test_add_sub()
 {
-	assert(exprAddSub("1") == 1);
-	assert(exprAddSub("1+2") == 1+2);
-	assert(exprAddSub("1+2+3") == 1+2+3);
-	assert(exprAddSub("1+2+3+4") == 1+2+3+4);
-	assert(exprAddSub("1-2") == 1-2);
-	assert(exprAddSub("1-2-3") == 1-2-3);
-	assert(exprAddSub("1-2+3") == 1-2+3);
+	assert(expr("1") == 1);
+	assert(expr("1+2") == 1+2);
+	assert(expr("1+2+3") == 1+2+3);
+	assert(expr("1+2+3+4") == 1+2+3+4);
+	assert(expr("1-2") == 1-2);
+	assert(expr("1-2-3") == 1-2-3);
+	assert(expr("1-2+3") == 1-2+3);
 }
 
 
 void test_mul_div()
 {
-	assert(exprMulDiv("3*4") == 3*4);
-	assert(exprMulDiv("3*4*5") == 3*4*5);
+	assert(expr("3*4") == 3*4);
+	assert(expr("3*4*5") == 3*4*5);
 
-	assert(exprMulDiv("4/5") == 4/5);
-	assert(exprMulDiv("6/3/2") == 6/3/2);
+	assert(expr("4/5") == 4/5);
+	assert(expr("6/3/2") == 6/3/2);
 
-	assert(exprMulDiv("6/3*2") == 6/3*2);
+	assert(expr("6/3*2") == 6/3*2);
 }
 
 void test_add_mul()
 {
-	assert(exprAddMul("1+2*4") == 1+2*4);
-	assert(exprAddMul("1+2*4+5*6") == 1+2*4+5*6);
-	assert(exprAddMul("1*2+4") == 1*2+4);
-	assert(exprAddMul("1*2+4*5+6") == 1*2+4*5+6);
+	assert(expr("1+2*4") == 1+2*4);
+	assert(expr("1+2*4+5*6") == 1+2*4+5*6);
+	assert(expr("1*2+4") == 1*2+4);
+	assert(expr("1*2+4*5+6") == 1*2+4*5+6);
 
-	assert(exprAddMul("1-2*4+5*6") == 1-2*4+5*6);
-	assert(exprAddMul("1*2-4*5+6") == 1*2-4*5+6);
+	assert(expr("1-2*4+5*6") == 1-2*4+5*6);
+	assert(expr("1*2-4*5+6") == 1*2-4*5+6);
 }
 
 int main()
