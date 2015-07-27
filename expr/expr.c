@@ -47,55 +47,21 @@ int calc(unsigned int left, char optr, unsigned int right)
 	}
 	return v;
 }
-Result chain(Context * ctx, OptrFun fp)
-{
-	int v = 0;
-	char optr;
-
-	Result r = num(ctx);
-	v = r.value;
-	while(fp(optr = r.ctx.str[r.ctx.pos]))
-	{
-		r.ctx.pos ++;
-		r = num(&r.ctx);
-		v = calc(v, optr, r.value);
-	}
-	r.value = v;
-	return r;
-}
 int exprAddSub(const char *s)
 {
 	Context ctx = {s, 0};
-//	return chain(&ctx, isAddSub).value;
 	return mixChain(&ctx, isAddSub, num).value;
 }
 
 int exprMulDiv(const char * s)
 {
 	Context ctx = {s, 0};
-//	return chain(&ctx, isMulDiv).value;
 	return mixChain(&ctx, isMulDiv, num).value;
 }
 
 Result mulDiv(Context * ctx)
 {
-	return chain(ctx, isMulDiv);
-}
-Result addMul(Context * ctx, OptrFun fp)
-{
-	int v = 0;
-	char optr;
-
-	Result r = mulDiv(ctx);
-	v = r.value;
-	while(fp(optr = r.ctx.str[r.ctx.pos]))
-	{
-		r.ctx.pos ++;
-		r = mulDiv(&r.ctx);
-		v = calc(v, optr, r.value);
-	}
-	r.value = v;
-	return r;
+	return mixChain(ctx, isMulDiv, num);
 }
 
 Result mixChain(Context * ctx, OptrFun optrFun, StartFun startFun)
@@ -103,7 +69,6 @@ Result mixChain(Context * ctx, OptrFun optrFun, StartFun startFun)
 	int v = 0;
 	char optr;
 
-//	Result r = mulDiv(ctx);
 	Result r = startFun(ctx);
 	v = r.value;
 	while(optrFun(optr = r.ctx.str[r.ctx.pos]))
