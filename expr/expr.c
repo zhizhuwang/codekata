@@ -12,6 +12,8 @@ typedef struct result{
 }Result;
 
 typedef int (*OptrFun)(char optr);
+typedef Result (*StartFun)(Context* ctx);
+Result mixChain(Context * ctx, OptrFun optrFun, StartFun startFun);
 
 Result num(Context * ctx)
 {
@@ -64,13 +66,15 @@ Result chain(Context * ctx, OptrFun fp)
 int exprAddSub(const char *s)
 {
 	Context ctx = {s, 0};
-	return chain(&ctx, isAddSub).value;
+//	return chain(&ctx, isAddSub).value;
+	return mixChain(&ctx, isAddSub, num).value;
 }
 
 int exprMulDiv(const char * s)
 {
 	Context ctx = {s, 0};
-	return chain(&ctx, isMulDiv).value;
+//	return chain(&ctx, isMulDiv).value;
+	return mixChain(&ctx, isMulDiv, num).value;
 }
 
 Result mulDiv(Context * ctx)
@@ -82,14 +86,30 @@ Result addMul(Context * ctx, OptrFun fp)
 	int v = 0;
 	char optr;
 
-//	Result r = chain(ctx,isMulDiv);
 	Result r = mulDiv(ctx);
 	v = r.value;
 	while(fp(optr = r.ctx.str[r.ctx.pos]))
 	{
 		r.ctx.pos ++;
-//		r = chain(&r.ctx, isMulDiv);
 		r = mulDiv(&r.ctx);
+		v = calc(v, optr, r.value);
+	}
+	r.value = v;
+	return r;
+}
+
+Result mixChain(Context * ctx, OptrFun optrFun, StartFun startFun)
+{
+	int v = 0;
+	char optr;
+
+//	Result r = mulDiv(ctx);
+	Result r = startFun(ctx);
+	v = r.value;
+	while(optrFun(optr = r.ctx.str[r.ctx.pos]))
+	{
+		r.ctx.pos ++;
+		r = startFun(&r.ctx);
 		v = calc(v, optr, r.value);
 	}
 	r.value = v;
@@ -98,7 +118,8 @@ Result addMul(Context * ctx, OptrFun fp)
 int exprAddMul(const char * s)
 {
 	Context ctx = {s, 0};
-	return addMul(&ctx, isAddSub).value;
+//	return addMul(&ctx, isAddSub).value;
+	return mixChain(&ctx,isAddSub, mulDiv).value;
 }
 void test_add_sub()
 {
