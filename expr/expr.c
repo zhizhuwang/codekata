@@ -123,6 +123,9 @@ void test_add_mul()
 	assert(exprAddMul("1+2*4+5*6") == 1+2*4+5*6);
 	assert(exprAddMul("1*2+4") == 1*2+4);
 	assert(exprAddMul("1*2+4*5+6") == 1*2+4*5+6);
+
+	assert(exprAddMul("1-2*4+5*6") == 1-2*4+5*6);
+	assert(exprAddMul("1*2-4*5+6") == 1*2-4*5+6);
 }
 
 int main()
