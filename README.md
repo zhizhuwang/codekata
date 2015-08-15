@@ -1,4 +1,4 @@
-coding practice
+Coding Practice
 ==========
 
 * BigNumberArithmetic.
@@ -24,6 +24,9 @@ coding practice
     Evaluate the string expression, which is combined with single digit positive integers and arithmetic operators including `+ - * / ( ) `
 
 
+Reference
+===========
+
 * Dependency Injection
 
     [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection#cite_note-3)  
@@ -32,4 +35,9 @@ coding practice
 
 
 * Design Patterns  
-    (https://en.wikibooks.org/wiki/Computer_Science_Design_Patterns)
+    (https://en.wikibooks.org/wiki/Computer_Science_Design_Patterns)  
+    (http://www.oodesign.com/)    
+
+* Functional Programming    
+    (http://kachayev.github.io/talks/uapycon2012/#/)    
+
