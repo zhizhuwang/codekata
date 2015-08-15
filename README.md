@@ -35,9 +35,12 @@ Reference
 
 
 * Design Patterns  
-    (https://en.wikibooks.org/wiki/Computer_Science_Design_Patterns)  
-    (http://www.oodesign.com/)    
+    [Computer Science Design Patterns](https://en.wikibooks.org/wiki/Computer_Science_Design_Patterns)  
+    [OO Design](http://www.oodesign.com/)    
 
 * Functional Programming    
-    (http://kachayev.github.io/talks/uapycon2012/#/)    
+    [Functional Programming Intro](http://coolshell.cn/articles/10822.html)  
+    [Functional Programming With Python](http://kachayev.github.io/talks/uapycon2012/#/)    
+ 
+
 
