@@ -28,7 +28,6 @@ Reference
 ===========
 
 * Dependency Injection
-
     [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection#cite_note-3)  
     [Martin Fowler](http://www.martinfowler.com/articles/injection.html)  
     [Strategy Pattern](https://en.wikipedia.org/wiki/Strategy_pattern)  
@@ -41,6 +40,8 @@ Reference
 * Functional Programming    
     [Functional Programming Intro](http://coolshell.cn/articles/10822.html)  
     [Functional Programming With Python](http://kachayev.github.io/talks/uapycon2012/#/)    
+    [The Y combinator](https://medium.com/@ayanonagon/the-y-combinator-no-not-that-one-7268d8d9c46)     
+    [The Y Combinator (Slight Return)](http://mvanier.livejournal.com/2897.html)
  
 
 
