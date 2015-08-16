@@ -8,9 +8,9 @@ Coding Practice
 * [ExcelColumnNumber](https://github.com/zhizhuwang/codekata/tree/master/ExcelColumnNumber)        
     Transformation between *Column* and *Interger*.    
 
-* [Fibonacci](https://github.com/zhizhuwang/codekata/tree/master/Fibonacci/erl)    
+* [Fibonacci number](https://github.com/zhizhuwang/codekata/tree/master/Fibonacci/erl)    
 
-    [What is Fibonacci?](http://en.wikipedia.org/wiki/Fibonacci_number).    
+    [Fibonacci number at Wiki](http://en.wikipedia.org/wiki/Fibonacci_number).    
 
 * [TrailingFactorialZeros](https://github.com/zhizhuwang/codekata/tree/master/TrailingFactorialZeros)  
 
