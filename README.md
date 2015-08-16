@@ -2,26 +2,21 @@ Coding Practice
 ==========
 
 * [BigNumberArithmetic](https://github.com/zhizhuwang/codekata/tree/master/BigNumberArithmetic)    
-
     Arithmetic operations of  big intergers,which are in the format of string.    
 
 * [ExcelColumnNumber](https://github.com/zhizhuwang/codekata/tree/master/ExcelColumnNumber)        
     Transformation between *Column* and *Interger*.    
 
 * [Fibonacci number](https://github.com/zhizhuwang/codekata/tree/master/Fibonacci/erl)    
-
     [What are Fibonacci numbers?](http://en.wikipedia.org/wiki/Fibonacci_number).    
 
 * [TrailingFactorialZeros](https://github.com/zhizhuwang/codekata/tree/master/TrailingFactorialZeros)  
-
     Find the number of trailing zeros of a Factorial.    
 
 * [Quick Sort](https://github.com/zhizhuwang/codekata/tree/master/QuickSort)    
-
-	[[](http://wwwx.cs.unc.edu/~zhew/Leetcoder/)]  
+	(http://wwwx.cs.unc.edu/~zhew/Leetcoder/) 
 	
 * [Expr](https://github.com/zhizhuwang/codekata/tree/master/expr)    
-
     Evaluate the string expression, which is combined with single digit positive integers and arithmetic operators including `+ - * / ( ) `  
 
 
