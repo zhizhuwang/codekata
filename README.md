@@ -10,7 +10,7 @@ Coding Practice
 
 * [Fibonacci number](https://github.com/zhizhuwang/codekata/tree/master/Fibonacci/erl)    
 
-    [Fibonacci number at Wiki](http://en.wikipedia.org/wiki/Fibonacci_number).    
+    [What are Fibonacci numbers?](http://en.wikipedia.org/wiki/Fibonacci_number).    
 
 * [TrailingFactorialZeros](https://github.com/zhizhuwang/codekata/tree/master/TrailingFactorialZeros)  
 
@@ -18,7 +18,7 @@ Coding Practice
 
 * [Quick Sort](https://github.com/zhizhuwang/codekata/tree/master/QuickSort)    
 
-	http://wwwx.cs.unc.edu/~zhew/Leetcoder/  
+	[[](http://wwwx.cs.unc.edu/~zhew/Leetcoder/)]  
 	
 * [Expr](https://github.com/zhizhuwang/codekata/tree/master/expr)    
 
