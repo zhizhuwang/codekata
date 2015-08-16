@@ -1,25 +1,26 @@
 Coding Practice
 ==========
 
-* BigNumberArithmetic.
+* [BigNumberArithmetic](https://github.com/zhizhuwang/codekata/tree/master/BigNumberArithmetic)    
 
     Arithmetic operations of  big intergers,which are in the format of string.
 
-* ExcelColumnNumber.
-
+* [ExcelColumnNumber](https://github.com/zhizhuwang/codekata/tree/master/ExcelColumnNumber)  
     Transformation between *Column* and *Interger*.
 
-* [Fibonacci](http://en.wikipedia.org/wiki/Fibonacci_number).
+* [Fibonacci](https://github.com/zhizhuwang/codekata/tree/master/Fibonacci/erl)
 
-* TrailingFactorialZeros.
+    [What is Fibonacci](http://en.wikipedia.org/wiki/Fibonacci_number).
+
+* [TrailingFactorialZeros.](https://github.com/zhizhuwang/codekata/tree/master/TrailingFactorialZeros)  
 
     Find the number of trailing zeros of a Factorial.
 
-* Quick Sort
+* [Quick Sort](https://github.com/zhizhuwang/codekata/tree/master/QuickSort)
 
 	(http://wwwx.cs.unc.edu/~zhew/Leetcoder/)
 	
-* Expr
+* [Expr](https://github.com/zhizhuwang/codekata/tree/master/expr)    
 
     Evaluate the string expression, which is combined with single digit positive integers and arithmetic operators including `+ - * / ( ) `
 
@@ -27,7 +28,7 @@ Coding Practice
 Reference
 ===========
 
-* Dependency Injection
+* Dependency Injection    
     [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection#cite_note-3)  
     [Martin Fowler](http://www.martinfowler.com/articles/injection.html)  
     [Strategy Pattern](https://en.wikipedia.org/wiki/Strategy_pattern)  
