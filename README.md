@@ -3,26 +3,26 @@ Coding Practice
 
 * [BigNumberArithmetic](https://github.com/zhizhuwang/codekata/tree/master/BigNumberArithmetic)    
 
-    Arithmetic operations of  big intergers,which are in the format of string.
+    Arithmetic operations of  big intergers,which are in the format of string.    
 
-* [ExcelColumnNumber](https://github.com/zhizhuwang/codekata/tree/master/ExcelColumnNumber)  
-    Transformation between *Column* and *Interger*.
+* [ExcelColumnNumber](https://github.com/zhizhuwang/codekata/tree/master/ExcelColumnNumber)        
+    Transformation between *Column* and *Interger*.    
 
-* [Fibonacci](https://github.com/zhizhuwang/codekata/tree/master/Fibonacci/erl)
+* [Fibonacci](https://github.com/zhizhuwang/codekata/tree/master/Fibonacci/erl)    
 
-    [What is Fibonacci](http://en.wikipedia.org/wiki/Fibonacci_number).
+    [What is Fibonacci?](http://en.wikipedia.org/wiki/Fibonacci_number).    
 
-* [TrailingFactorialZeros.](https://github.com/zhizhuwang/codekata/tree/master/TrailingFactorialZeros)  
+* [TrailingFactorialZeros](https://github.com/zhizhuwang/codekata/tree/master/TrailingFactorialZeros)  
 
-    Find the number of trailing zeros of a Factorial.
+    Find the number of trailing zeros of a Factorial.    
 
-* [Quick Sort](https://github.com/zhizhuwang/codekata/tree/master/QuickSort)
+* [Quick Sort](https://github.com/zhizhuwang/codekata/tree/master/QuickSort)    
 
-	(http://wwwx.cs.unc.edu/~zhew/Leetcoder/)
+	http://wwwx.cs.unc.edu/~zhew/Leetcoder/  
 	
 * [Expr](https://github.com/zhizhuwang/codekata/tree/master/expr)    
 
-    Evaluate the string expression, which is combined with single digit positive integers and arithmetic operators including `+ - * / ( ) `
+    Evaluate the string expression, which is combined with single digit positive integers and arithmetic operators including `+ - * / ( ) `  
 
 
 Reference
