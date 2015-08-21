@@ -37,7 +37,9 @@ Reference
     [Functional Programming Intro](http://coolshell.cn/articles/10822.html)  
     [Functional Programming With Python](http://kachayev.github.io/talks/uapycon2012/#/)    
     [The Y combinator](https://medium.com/@ayanonagon/the-y-combinator-no-not-that-one-7268d8d9c46)     
-    [The Y Combinator (Slight Return)](http://mvanier.livejournal.com/2897.html)
+    [The Y Combinator (Slight Return)](http://mvanier.livejournal.com/2897.html)  
+    [Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)  
+
  
 
 
