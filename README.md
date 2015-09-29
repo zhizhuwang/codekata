@@ -19,6 +19,10 @@ Coding Practice
 * [Expr](https://github.com/zhizhuwang/codekata/tree/master/expr)    
     Evaluate the string expression, which is combined with single digit positive integers and arithmetic operators including `+ - * / ( ) `  
 
+* [Triangle](https://github.com/zhizhuwang/codekata/tree/master/Triangles)    
+    Evaluate the n-th line of [Paccal's triangle](https://en.wikipedia.org/wiki/Pascal%27s_triangle), using Python with [generator](https://wiki.python.org/moin/Generators).    
+
+
 
 Reference
 ===========
