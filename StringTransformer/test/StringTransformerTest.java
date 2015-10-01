@@ -12,13 +12,18 @@ public class StringTransformerTest {
 		
 		assertEquals(2, app.getTransformerCount());
 		
-//		TransView gui = new TransView();
+	}
+	
+	@Test
+	public void test_trans_app_init_with_view()
+	{
+		TransApp app = new TransApp(new String[]{"Upper","Lower"});
 		
-//		app.setView(gui);
+		TransView gui = new MockedView();
 		
-//		gui.setOriginalString("hello world");
+		app.setView(gui);
 		
-//		assertEquals("HELLO WORLD", gui.getResultString());
+		assertEquals(2, gui.getTransformerCount());
 	}
 	
 }
