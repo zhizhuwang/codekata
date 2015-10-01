@@ -30,4 +30,10 @@ public class TransApp {
 		
 		gui.refreshTransformers(transformers);
 	}
+
+
+	public void removeTransformer(String string) {
+		transformers.remove(string);
+		gui.refreshTransformers(transformers);
+	}
 }

@@ -47,4 +47,22 @@ public class StringTransformerTest {
 		assertEquals(2, gui.getTransformerCount());
 	}
 	
+	@Test
+	public void test_remove_a_transformer_from_trans_app()
+	{
+		TransApp app = new TransApp(Arrays.asList(new String[]{"Upper","Lower","TrimPrefix"}));
+		
+		TransView gui = new MockedView();
+		
+		app.setView(gui);
+		
+		app.removeTransformer("Upper");
+		
+		assertEquals(2, gui.getTransformerCount());
+		
+		app.removeTransformer("Lower");
+		
+		assertEquals(1, gui.getTransformerCount());
+	}
+	
 }
