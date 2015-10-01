@@ -30,7 +30,6 @@ public class StringTransformerTest {
 	}
 	
 	@Test
-	@Ignore
 	public void test_add_a_transformer_to_trans_app()
 	{
 		TransApp app = new TransApp(Arrays.asList(new String[]{}));
@@ -42,6 +41,10 @@ public class StringTransformerTest {
 		app.addTransformer("Upper");
 		
 		assertEquals(1, gui.getTransformerCount());
+		
+		app.addTransformer("Lower");
+		
+		assertEquals(2, gui.getTransformerCount());
 	}
 	
 }

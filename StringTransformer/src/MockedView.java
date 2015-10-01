@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -11,7 +12,12 @@ public class MockedView implements TransView {
 
 	@Override
 	public void initTransformers(List<String> transformers) {
-		transformerList = transformers;
+		transformerList = new ArrayList<String>(transformers);
+	}
+
+	@Override
+	public void refreshTransformers(List<String> transformers) {
+		transformerList = new ArrayList<String>(transformers);
 	}
 
 }

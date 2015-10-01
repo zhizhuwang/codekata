@@ -7,5 +7,7 @@ public interface TransView {
 
 	void initTransformers(List<String> transformers);
 
+	void refreshTransformers(List<String> transformers);
+
 	
 }

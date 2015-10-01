@@ -1,14 +1,15 @@
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class TransApp {
 
-	private List<String> transformers = null;
+	private List<String> transformers;
 	private TransView gui = null;
 	
 	public TransApp(List<String> transformers)
 	{
-		this.transformers = transformers;
+		this.transformers = new ArrayList<String>(transformers);
 	}
 	
 
@@ -25,6 +26,8 @@ public class TransApp {
 
 	public void addTransformer(String aTransformer) {
 
+		transformers.add(aTransformer);
 		
+		gui.refreshTransformers(transformers);
 	}
 }
