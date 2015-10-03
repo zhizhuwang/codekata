@@ -6,3 +6,4 @@
 *.metadata
 *.beam
 *.class
+*.classpath

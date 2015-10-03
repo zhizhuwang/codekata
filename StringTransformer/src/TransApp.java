@@ -36,4 +36,10 @@ public class TransApp {
 		transformers.remove(string);
 		gui.refreshTransformers(transformers);
 	}
+
+
+	public void removeAllTransformer() {
+		this.transformers.clear();
+		gui.refreshTransformers(transformers);
+	}
 }
