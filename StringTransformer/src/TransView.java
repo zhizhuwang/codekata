@@ -9,5 +9,9 @@ public interface TransView {
 
 	void refreshTransformers(List<String> transformers);
 
+	String getOringalString();
+
+	void setResultString(String output);
+
 	
 }

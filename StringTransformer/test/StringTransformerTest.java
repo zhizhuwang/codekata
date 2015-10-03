@@ -79,4 +79,17 @@ public class StringTransformerTest {
 		assertEquals(0, gui.getTransformerCount());
 	}
 	
+	@Test
+	public void test_apply_a_transformers_to_input_string()
+	{
+		TransApp app = new TransApp(Arrays.asList(new String[]{"Upper"}));
+		MockedView gui = new MockedView();
+		app.setView(gui);
+
+		gui.setOriginalString("hello world");
+		
+		app.applyTransformers();
+		
+		assertEquals("HELLO WORLD", gui.getResultString());
+	}
 }

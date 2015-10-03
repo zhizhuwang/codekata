@@ -42,4 +42,16 @@ public class TransApp {
 		this.transformers.clear();
 		gui.refreshTransformers(transformers);
 	}
+
+
+	public void applyTransformers() {
+
+		String input = gui.getOringalString();
+		String output = null;
+		if(transformers.get(0).equals("Upper"))
+		{
+			output = input.toUpperCase();
+		}
+		gui.setResultString(output);
+	}
 }
