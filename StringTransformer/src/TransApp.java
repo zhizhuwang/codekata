@@ -47,11 +47,31 @@ public class TransApp {
 	public void applyTransformers() {
 
 		String input = gui.getOringalString();
-		String output = null;
-		if(transformers.get(0).equals("Upper"))
+		String output = input;
+		
+		for(String aTransformer : this.transformers)
 		{
-			output = input.toUpperCase();
+			
+			if(aTransformer.equals("Upper"))
+			{
+				output = output.toUpperCase();
+			}
+			else if(aTransformer.equals("TrimPrefix"))
+			{
+				output = trimPrefix(output);
+			}
 		}
 		gui.setResultString(output);
+	}
+
+
+	private String trimPrefix(String input) {
+		int i = 0;
+		for(; i<input.length(); i++)
+		{
+			if(input.charAt(i) != ' ')
+				break;
+		}
+		return input.substring(i);
 	}
 }
