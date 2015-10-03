@@ -106,4 +106,18 @@ public class StringTransformerTest {
 		
 		assertEquals("HELLO WORLD ", gui.getResultString());
 	}
+	
+	@Test
+	public void test_apply_multiple_transformers_with_Lower_and_TrimPrefix()
+	{
+		TransApp app = new TransApp(Arrays.asList(new String[]{"TrimPrefix","Lower"}));
+		MockedView gui = new MockedView();
+		app.setView(gui);
+
+		gui.setOriginalString(" heLlo woRld ");
+		
+		app.applyTransformers();
+		
+		assertEquals("hello world ", gui.getResultString());
+	}
 }

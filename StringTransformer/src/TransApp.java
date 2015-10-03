@@ -60,6 +60,10 @@ public class TransApp {
 			{
 				output = trimPrefix(output);
 			}
+			else if(aTransformer.equals("Lower"))
+			{
+				output = output.toLowerCase();
+			}
 		}
 		gui.setResultString(output);
 	}
