@@ -43,9 +43,13 @@ Reference
     [The Y combinator](https://medium.com/@ayanonagon/the-y-combinator-no-not-that-one-7268d8d9c46)     
     [The Y Combinator (Slight Return)](http://mvanier.livejournal.com/2897.html)  
     [Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)  
+    [Lambda calculus](http://liujiacai.net/blog/2014/10/12/lambda-calculus-introduction/)    
 
 * Programming Life  
+    [Beyond the Void](https://www.byvoid.com/)
     [icodeit](http://icodeit.org/)    
+    [Keep Writing Codes](http://liujiacai.net)    
+
 
 
 
