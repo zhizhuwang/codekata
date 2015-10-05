@@ -1,15 +1,21 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class TransApp {
 
 	private List<String> transformers;
 	private TransView gui = null;
+	private Map<String, Transformer> transMap = new HashMap<>();
 	
 	public TransApp(List<String> transformers)
 	{
 		this.transformers = new ArrayList<String>(transformers);
+		transMap.put("Upper", new Upper());
+		transMap.put("Lower", new Lower());
+		transMap.put("TrimPrefix", new TrimPrefix());
 	}
 	
 
@@ -54,35 +60,13 @@ public class TransApp {
 			Transformer t = getTransforer(aTransformer);
 			output = t.apply(output);
 		}
-//		for(String aTransformer : this.transformers)
-//		{
-//			
-//			if(aTransformer.equals("Upper"))
-//			{
-//				output = output.toUpperCase();
-//			}
-//			else if(aTransformer.equals("TrimPrefix"))
-//			{
-//				output = trimPrefix(output);
-//			}
-//			else if(aTransformer.equals("Lower"))
-//			{
-//				output = output.toLowerCase();
-//			}
-//		}
 		gui.setResultString(output);
 	}
 
 
 	private Transformer getTransforer(String aTransformer) {
 		
-		if(aTransformer.equals("Upper"))
-			return new Upper();
-		else if(aTransformer.equals("Lower"))
-			return new Lower();
-		else if(aTransformer.equals("TrimPrefix"))
-			return new TrimPrefix();
-		return null;
+		return transMap.get(aTransformer);
 	}
 
 
