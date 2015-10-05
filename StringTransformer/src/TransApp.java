@@ -49,23 +49,40 @@ public class TransApp {
 		String input = gui.getOringalString();
 		String output = input;
 		
-		for(String aTransformer : this.transformers)
+		for(String aTransformer : transformers)
 		{
-			
-			if(aTransformer.equals("Upper"))
-			{
-				output = output.toUpperCase();
-			}
-			else if(aTransformer.equals("TrimPrefix"))
-			{
-				output = trimPrefix(output);
-			}
-			else if(aTransformer.equals("Lower"))
-			{
-				output = output.toLowerCase();
-			}
+			Transformer t = getTransforer(aTransformer);
+			output = t.apply(output);
 		}
+//		for(String aTransformer : this.transformers)
+//		{
+//			
+//			if(aTransformer.equals("Upper"))
+//			{
+//				output = output.toUpperCase();
+//			}
+//			else if(aTransformer.equals("TrimPrefix"))
+//			{
+//				output = trimPrefix(output);
+//			}
+//			else if(aTransformer.equals("Lower"))
+//			{
+//				output = output.toLowerCase();
+//			}
+//		}
 		gui.setResultString(output);
+	}
+
+
+	private Transformer getTransforer(String aTransformer) {
+		
+		if(aTransformer.equals("Upper"))
+			return new Upper();
+		else if(aTransformer.equals("Lower"))
+			return new Lower();
+		else if(aTransformer.equals("TrimPrefix"))
+			return new TrimPrefix();
+		return null;
 	}
 
 
