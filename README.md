@@ -46,7 +46,7 @@ Reference
     [Lambda calculus](http://liujiacai.net/blog/2014/10/12/lambda-calculus-introduction/)    
 
 * Programming Life  
-    [Beyond the Void](https://www.byvoid.com/)
+    [Beyond the Void](https://www.byvoid.com/)    
     [icodeit](http://icodeit.org/)    
     [Keep Writing Codes](http://liujiacai.net)    
 
