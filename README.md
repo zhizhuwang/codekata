@@ -47,6 +47,8 @@ Reference
 
 * Programming Life  
     [Beyond the Void](https://www.byvoid.com/)    
+    [MIND HACKS](http://mindhacks.cn/)    
+    [CoolShell](http://coolshell.cn/)    
     [icodeit](http://icodeit.org/)    
     [Keep Writing Codes](http://liujiacai.net)    
 
