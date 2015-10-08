@@ -22,6 +22,8 @@ Coding Practice
 * [Triangle](https://github.com/zhizhuwang/codekata/tree/master/Triangles)    
     Evaluate the n-th line of [Paccal's triangle](https://en.wikipedia.org/wiki/Pascal%27s_triangle), using Python with [generator](https://wiki.python.org/moin/Generators).    
 
+* [String Transformers](https://github.com/zhizhuwang/codekata/tree/master/StringTransformer)    
+    Apply a serial of *transformers* to the input *string*, the list of transformers can be edited from user interface, such as GUI.
 
 
 Reference
