@@ -54,6 +54,15 @@ Reference
     [icodeit](http://icodeit.org/)    
     [Keep Writing Codes](http://liujiacai.net)    
 
+* DSL
+    [Domain-specific language](https://en.wikipedia.org/wiki/Domain-specific_language)    
+    [Domain Specific Language by Martin Fowler](http://martinfowler.com/bliki/DomainSpecificLanguage.html)  
+    [DSL Boundary by Martin Fowler](http://martinfowler.com/bliki/DslBoundary.html)
+    [Creating DSLs in Java](http://www.javaworld.com/article/2077865/core-java/core-java-creating-dsls-in-java-part-1-what-is-a-domain-specific-language.html)    
+    [An Approach to Internal Domain-Specific Languages in Java](http://www.infoq.com/articles/internal-dsls-java)   
+    [First Steps with DSL on Java?](http://stackoverflow.com/questions/3305729/first-steps-with-dsl-on-java)    
+
+
 
 
 
