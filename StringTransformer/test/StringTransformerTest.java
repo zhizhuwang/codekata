@@ -22,7 +22,7 @@ public class StringTransformerTest {
 	{
 		TransApp app = new TransApp(Arrays.asList(new String[]{"Upper","Lower"}));
 		
-		TransView gui = new MockedView();
+		MockedView gui = new MockedView();
 		
 		app.setView(gui);
 		
@@ -34,7 +34,7 @@ public class StringTransformerTest {
 	{
 		TransApp app = new TransApp(Arrays.asList(new String[]{}));
 		
-		TransView gui = new MockedView();
+		MockedView gui = new MockedView();
 		
 		app.setView(gui);
 		
@@ -52,7 +52,7 @@ public class StringTransformerTest {
 	{
 		TransApp app = new TransApp(Arrays.asList(new String[]{"Upper","Lower","TrimPrefix"}));
 		
-		TransView gui = new MockedView();
+		MockedView gui = new MockedView();
 		
 		app.setView(gui);
 		
@@ -70,7 +70,7 @@ public class StringTransformerTest {
 	{
 		TransApp app = new TransApp(Arrays.asList(new String[]{"Upper","Lower","TrimPrefix"}));
 		
-		TransView gui = new MockedView();
+		MockedView gui = new MockedView();
 		
 		app.setView(gui);
 		
