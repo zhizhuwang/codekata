@@ -46,6 +46,9 @@ Reference
     [The Y Combinator (Slight Return)](http://mvanier.livejournal.com/2897.html)  
     [Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)  
     [Lambda calculus](http://liujiacai.net/blog/2014/10/12/lambda-calculus-introduction/)    
+    [Functional programming in Scala](http://adv-r.had.co.nz/Functional-programming.html)    
+    [How to write a interpreter](http://www.yinwang.org/blog-cn/2012/08/01/interpreter/)    
+
 
 * Programming Life  
     [Beyond the Void](https://www.byvoid.com/)    
