@@ -48,6 +48,8 @@ Reference
     [Lambda calculus](http://liujiacai.net/blog/2014/10/12/lambda-calculus-introduction/)    
     [Functional programming in Scala](http://adv-r.had.co.nz/Functional-programming.html)    
     [How to write a interpreter](http://www.yinwang.org/blog-cn/2012/08/01/interpreter/)    
+    [Why do we need currying](http://luochen1990.me/2015/why-curry/)    
+    
 
 
 * Programming Life  
