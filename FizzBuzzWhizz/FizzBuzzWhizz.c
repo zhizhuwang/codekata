@@ -111,7 +111,7 @@ struct rule* or3(struct rule* r1, struct rule* r2, struct rule* r3)
 }
 struct rule* or4(struct rule* r1, struct rule* r2, struct rule* r3, struct rule* r4)
 {
-	return or(r1, or(r2,or(r3,r4)));
+	return or(or3(r1, r2, r3), r4);
 }
 struct rule_result apply(struct rule* r, int N)
 {
