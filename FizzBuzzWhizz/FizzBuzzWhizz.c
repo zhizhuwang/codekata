@@ -236,19 +236,50 @@ char * nope(int N)
 }
 
 
+void freeRule(struct rule* r)
+{
+	printf("rule type %d\n", r->type);
+	switch(r->type)
+	{
+	case R_ATOM:
+		free(r);
+		break;
+
+	case R_AND:
+		freeRule(r->val.and.rs[0]);
+		freeRule(r->val.and.rs[1]);
+		free(r);
+		break;
+
+	case R_OR:
+		freeRule(r->val.or.rs[0]);
+		freeRule(r->val.or.rs[1]);
+		free(r);
+		break;
+
+	default:
+		printf("exception type %d\n", r->type);
+		assert(0);
+		break;
+	}
+}
+
+#define ATOM_3 atom(times_3, to_Fizz)
+#define ATOM_5 atom(times_5, to_Buzz)
+#define ATOM_7 atom(times_7, to_Whizz)
 
 int main()
 {
 
-	struct rule * r1_3 = atom(times_3, to_Fizz);
-	struct rule * r1_5 = atom(times_5, to_Buzz);
-	struct rule * r1_7 = atom(times_7, to_Whizz);
+//	struct rule * r1_3 = atom(times_3, to_Fizz);
+//	struct rule * r1_5 = atom(times_5, to_Buzz);
+//	struct rule * r1_7 = atom(times_7, to_Whizz);
 
-	struct rule * r1 = or3(r1_3, r1_5,r1_7);
-	struct rule * r2 = or4(and3(r1_3, r1_5, r1_7),
-			and(r1_3, r1_5),
-			and(r1_5, r1_7),
-			and(r1_3, r1_7));
+	struct rule * r1 = or3(ATOM_3, ATOM_5,ATOM_7);
+	struct rule * r2 = or4(and3(ATOM_3, ATOM_5, ATOM_7),
+			and(ATOM_3, ATOM_5),
+			and(ATOM_5, ATOM_7),
+			and(ATOM_3, ATOM_7));
 	struct rule * r3 = atom(contains_3, to_Fizz);
 	struct rule * rd = atom(always_true, nope);
 
@@ -262,6 +293,8 @@ int main()
 		rr = apply(spec, i);
 		printf("%d -- %s \n" , i, rr.value);
 	}
+
+	freeRule(spec);
 
 	return 0;
 }
