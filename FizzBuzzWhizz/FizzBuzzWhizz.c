@@ -1,7 +1,7 @@
 /*
  * FizzBuzzWhizz.c
  *
- *  Created on: 2015Äê11ÔÂ29ÈÕ
+ *  Created on: 2015.11.29
  *      Author: zhizhuwang
  */
 #include <string.h>
@@ -199,7 +199,7 @@ int times_5(N)
 }
 int times_7(N)
 {
-	return N % 3 == 0;
+	return N % 7 == 0;
 }
 
 
@@ -253,7 +253,6 @@ int main()
 	struct rule * rd = atom(always_true, nope);
 
 	struct rule * spec = or4(r3,r2,r1,rd);
-
 
 	struct rule_result rr;
 
