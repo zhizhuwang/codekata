@@ -25,6 +25,9 @@ Coding Practice
 * [String Transformers](https://github.com/zhizhuwang/codekata/tree/master/StringTransformer)    
     Apply a serial of *transformers* to the input *string*, the list of transformers can be edited from user interface, such as GUI.
 
+* [FizzBuzzWhizz](https://github.com/zhizhuwang/codekata/tree/master/FizzBuzzWhizz)     
+    Implementation in [C](https://github.com/zhizhuwang/codekata/blob/master/FizzBuzzWhizz/FizzBuzzWhizz.c).  
+
 
 Reference
 ===========
