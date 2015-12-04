@@ -14,6 +14,9 @@
 % rule2_5_7() -> 'AND'(rule1_5(), rule1_7)
 % rule2_3_5_7() -> 'AND'(rule2_3_5(), rule1_7())
 
+% Rule 3
+% rule3 -  atom(contains(3), fun(_) -> "Fizz" end)
+
 
 atom(Cond, Action) ->
 	fun(I) ->
@@ -29,6 +32,14 @@ atom(Cond, Action) ->
 times(N) ->
 	fun(I) ->
 		I rem N =:= 0 end.
+
+contains(N) ->
+	fun(I) ->
+		(I rem 10 =:= N) or 
+		(((I div 10) rem 10) =:= N) or 
+		(((I div 100) rem 10) =:= N) 
+	end.
+
 
 'AND'(R1, R2) ->
 	fun(I) ->
@@ -70,6 +81,8 @@ test() ->
 									atom(times(7), fun(_) -> "Whizz" end))
 							)
 					)
-					(105)
+					(105),
+
+	"Fizz" = (atom(contains(3), fun(_) -> "Fizz" end))(13)
 	.
 	
