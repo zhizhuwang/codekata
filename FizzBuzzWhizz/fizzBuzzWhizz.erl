@@ -15,8 +15,9 @@
 % rule2_3_5_7() -> 'AND'(rule2_3_5(), rule1_7())
 
 % Rule 3
-% rule3 -  atom(contains(3), fun(_) -> "Fizz" end)
-
+% rule3_contains_3() ->  atom(contains(3), fun(_) -> "Fizz" end)
+% rule3() -> 'OR'(rule3_contains_3(),rule2_3_5_7())
+% 
 
 atom(Cond, Action) ->
 	fun(I) ->
@@ -59,6 +60,17 @@ contains(N) ->
 	end.
 
 
+'OR'(R1, R2) ->
+	fun(I) ->
+		Res1 = R1(I),
+		case Res1 of
+			false ->
+				R2(I);
+			_ ->
+				R1(I)
+		end
+	end.
+
 test() ->
 	"Fizz" = (atom(times(3), fun(_) -> "Fizz" end))(6),
 	"Buzz" = (atom(times(5), fun(_) -> "Buzz" end))(15),
@@ -83,6 +95,29 @@ test() ->
 					)
 					(105),
 
-	"Fizz" = (atom(contains(3), fun(_) -> "Fizz" end))(13)
+	"Fizz" = (atom(contains(3), fun(_) -> "Fizz" end))(13),
+
+	"Fizz" = ('OR'(atom(contains(3), fun(_) -> "Fizz" end),
+					'AND'(atom(times(3), fun(_) -> "Fizz" end),
+							'AND'(atom(times(5), fun(_) -> "Buzz" end),
+									atom(times(7), fun(_) -> "Whizz" end))
+							)
+					))
+					(13),
+
+	"Fizz" = ('OR'(atom(contains(3), fun(_) -> "Fizz" end),
+					'AND'(atom(times(3), fun(_) -> "Fizz" end),
+							'AND'(atom(times(5), fun(_) -> "Buzz" end),
+									atom(times(7), fun(_) -> "Whizz" end))
+							)
+					))
+					(35),
+	"FizzBuzzWhizz" = ('OR'(atom(contains(3), fun(_) -> "Fizz" end),
+					'AND'(atom(times(3), fun(_) -> "Fizz" end),
+							'AND'(atom(times(5), fun(_) -> "Buzz" end),
+									atom(times(7), fun(_) -> "Whizz" end))
+							)
+					))
+					(105)
 	.
 	
