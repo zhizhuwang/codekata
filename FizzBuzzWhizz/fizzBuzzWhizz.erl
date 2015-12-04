@@ -19,6 +19,13 @@
 % rule3() -> 'OR'(rule3_contains_3(),rule2_3_5_7())
 % 
 
+% Rule deault
+% rule4() -> atom(always_true(_), fun(I) -> I end)
+%
+
+% Final Rule
+% Rule -> 'OR'(rule3(),rule4())
+
 atom(Cond, Action) ->
 	fun(I) ->
 		case Cond(I) of 
@@ -41,6 +48,8 @@ contains(N) ->
 		(((I div 100) rem 10) =:= N) 
 	end.
 
+always_true(_N) ->
+	fun(_I) -> true end.
 
 'AND'(R1, R2) ->
 	fun(I) ->
@@ -118,6 +127,20 @@ test() ->
 									atom(times(7), fun(_) -> "Whizz" end))
 							)
 					))
-					(105)
+					(105),
+
+	11 = (atom(always_true(0), fun(I) -> I end))(11),
+
+	Rule = 'OR'(
+				'OR'(atom(contains(3), fun(_) -> "Fizz" end),
+					'AND'(atom(times(3), fun(_) -> "Fizz" end),
+							'AND'(atom(times(5), fun(_) -> "Buzz" end),
+									atom(times(7), fun(_) -> "Whizz" end))
+							)
+					), 
+				atom(always_true(0), fun(I) -> I end)),
+
+	11 = Rule(11),
+	[io:format("~p~n",[Rule(I)]) || I <- lists:seq(1,100)]
 	.
 	
