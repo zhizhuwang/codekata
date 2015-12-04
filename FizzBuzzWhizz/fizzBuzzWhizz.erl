@@ -64,6 +64,12 @@ test() ->
 	"BuzzWhizz" = ('AND'(atom(times(5), fun(_) -> "Buzz" end),
 						atom(times(7), fun(_) -> "Whizz" end))
 					)
-					(35)
+					(35),
+	"FizzBuzzWhizz" = ('AND'(atom(times(3), fun(_) -> "Fizz" end),
+							'AND'(atom(times(5), fun(_) -> "Buzz" end),
+									atom(times(7), fun(_) -> "Whizz" end))
+							)
+					)
+					(105)
 	.
 	
