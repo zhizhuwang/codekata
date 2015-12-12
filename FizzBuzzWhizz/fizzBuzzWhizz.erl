@@ -174,13 +174,20 @@ test() ->
 	end.
 	
 'AND'(RS) -> 
-	'AND_ACC'(RS,"").
+	'AND_ACC'(RS,[]).
 
-'AND_ACC'([], ACC) -> fun(_) -> ACC end;
+'AND_ACC'([], ACC) -> 
+	fun(_) -> 
+		case ACC of 
+			[]  -> false;
+			_ -> ACC
+		end
+	end;
 
-'AND_ACC'([First|Rest], ACC) ->
+
+'AND_ACC'([H|Rest], ACC) ->
 	fun(I) ->
-		R = First(I),
+		R = H(I),
 		case R of
 			false ->
 				('AND_ACC'(Rest, ACC))(I);
@@ -194,7 +201,6 @@ test2() ->
 	Rule1_7 = atom(times(7), fun(_) -> "Whizz" end),
 
 	Rule1 = 'OR'([Rule1_3,Rule1_5,Rule1_7]),
-
 	"Fizz" = Rule1(6),
 	"Buzz" = Rule1(10),
 	"Whizz" = Rule1(49),
@@ -202,7 +208,19 @@ test2() ->
 	Rule2 = 'AND'([Rule1_3,Rule1_5,Rule1_7]),
 	"FizzBuzz" = Rule2(15),
 	"BuzzWhizz" = Rule2(35),
-	"FizzBuzzWhizz" = Rule2(105)
+	"FizzBuzzWhizz" = Rule2(105),
+
+	Rule3_1 = atom(contains(3), fun(_) -> "Fizz" end),
+	Rule3 = 'OR'([Rule3_1, Rule2]),
+	"Fizz" = Rule3(13),
+	"Whizz" = Rule3(49),
+
+	Rule4 = atom(always_true(0), fun(I) -> I end),
+	%23 = Rule4(23),
+	2 = Rule4(2),
+
+	Rule = 'OR'([Rule3,Rule2,Rule1,Rule4]),
+	[io:format("~p~n",[Rule(I)]) || I <- lists:seq(1,111)]
 	.
 	
 	
