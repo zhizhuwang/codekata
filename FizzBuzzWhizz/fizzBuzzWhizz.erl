@@ -144,3 +144,47 @@ test() ->
 	[io:format("~p~n",[Rule(I)]) || I <- lists:seq(1,100)]
 	.
 	
+%%  Solution 2
+%%  represents rules as lists
+%%  Rule 1 
+%%  rule1_3 = atom(times(3), fun(_) -> "Fizz" end)
+%%  rule1_5 = atom(times(5), fun(_) -> "Buzz" end)
+%%  rule1_7 = atom(times(7), fun(_) -> "Whizz" end)
+%%  rule2 = 'OR'([rule1_3,rule1_5,rule1_7])
+
+%%  Rule 2
+%%  rule2 = 'AND'([rule1_3,rule1_5,rule1_7])
+
+
+%%  Rule 3
+%%  rule3_1 = atom(contains(3), fun(_) -> "Fizz" end)
+%%  rule3 = 'OR'([rule3_1,rule2])
+
+%%  Rule 4
+%%  rule4 = atom(always_true(0), fun(I) -> I end)
+
+'OR'([]) -> fun(_I) -> false end;
+
+'OR'([H|T]) ->
+	fun(I) ->
+		R = H(I),
+		if  R =:= false -> ('OR'(T))(I);
+			true -> R
+		end
+	end.
+	
+
+test2() ->
+	Rule1_3 = atom(times(3), fun(_) -> "Fizz" end),
+	Rule1_5 = atom(times(5), fun(_) -> "Buzz" end),
+	Rule1_7 = atom(times(7), fun(_) -> "Whizz" end),
+
+	Rule1 = 'OR'([Rule1_3,Rule1_5,Rule1_7]),
+
+	"Fizz" = Rule1(6),
+	"Buzz" = Rule1(10),
+	"Whizz" = Rule1(49)
+	.
+	
+	
+	
