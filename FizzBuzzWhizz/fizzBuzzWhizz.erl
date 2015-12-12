@@ -173,6 +173,20 @@ test() ->
 		end
 	end.
 	
+'AND'(RS) -> 
+	'AND_ACC'(RS,"").
+
+'AND_ACC'([], ACC) -> fun(_) -> ACC end;
+
+'AND_ACC'([First|Rest], ACC) ->
+	fun(I) ->
+		R = First(I),
+		case R of
+			false ->
+				('AND_ACC'(Rest, ACC))(I);
+			_ -> ('AND_ACC'(Rest, ACC ++ R))(I)
+		end
+	end.
 
 test2() ->
 	Rule1_3 = atom(times(3), fun(_) -> "Fizz" end),
@@ -183,7 +197,12 @@ test2() ->
 
 	"Fizz" = Rule1(6),
 	"Buzz" = Rule1(10),
-	"Whizz" = Rule1(49)
+	"Whizz" = Rule1(49),
+
+	Rule2 = 'AND'([Rule1_3,Rule1_5,Rule1_7]),
+	"FizzBuzz" = Rule2(15),
+	"BuzzWhizz" = Rule2(35),
+	"FizzBuzzWhizz" = Rule2(105)
 	.
 	
 	
