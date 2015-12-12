@@ -216,10 +216,12 @@ test2() ->
 	"Whizz" = Rule3(49),
 
 	Rule4 = atom(always_true(0), fun(I) -> I end),
-	%23 = Rule4(23),
+	23 = Rule4(23),
 	2 = Rule4(2),
 
 	Rule = 'OR'([Rule3,Rule2,Rule1,Rule4]),
+	"Fizz" = Rule(23),
+	2 = Rule(2),
 	[io:format("~p~n",[Rule(I)]) || I <- lists:seq(1,111)]
 	.
 	
