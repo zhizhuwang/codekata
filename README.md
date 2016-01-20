@@ -29,7 +29,7 @@ Coding Practice
     Implementation in [C](https://github.com/zhizhuwang/codekata/blob/master/FizzBuzzWhizz/FizzBuzzWhizz.c), [Erlang](https://github.com/zhizhuwang/codekata/blob/master/FizzBuzzWhizz/fizzBuzzWhizz.erl).
 
 * [Eight-queens puzzle]    
-    Implementation in [Scheme](https://github.com/zhizhuwang/SICP-Solutions/blob/master/2.42.rkt).    
+    Implementation in [Scheme](https://github.com/zhizhuwang/SICP-Solutions/blob/master/ch%202/2.42.rkt).    
 
 
 
