@@ -26,6 +26,9 @@
 
 %% "connected" means Subset
 
+%%  denote "connected" in Erlang symbols
+%%  Line = [$a, $b], where P1 = $a, P2 = $b
+
 %% set S1 is subset of set S2
 subset([], _S2) ->
 	true;
@@ -33,7 +36,22 @@ subset([H|T],S2) ->
 	lists:member(H, S2) andalso  subset(T, S2).
 
 test_subset() ->
-	true = subset([a,b],[a,b]),
-	true = subset([a,b],[a,c,b]),
-	false = subset([a,b],[a,c]),
+	Line = [$a, $b],
+	P1 = $a,
+	P2 = $b,
+	true = subset([P1,P2], Line),
+	ok.
+
+test_subset2() ->
+	Line1 = [$a, $c, $b],
+	Line2 = [$c, $d],
+	P1 = $a,
+	P2 = $b,
+	P3 = $d,
+	P4 = $c,
+	true = subset([P1,P4], Line1),
+	true = subset([P1,P2], Line1),
+	true = subset([P4,P2], Line1),
+
+	true = subset([P4,P3], Line2),
 	ok.
