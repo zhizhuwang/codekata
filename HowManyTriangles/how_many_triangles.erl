@@ -95,6 +95,15 @@ test_connected() ->
 
 %% what does "on_a_line" mean
 %% points P1, P2, P3 is on a line
+test3() ->
+	Line1 = [$a,$c,$b],
+	Line2 = [$c,$d],
+	true = subset([$a,$c,$b],Line1),
+	false = subset([$a,$c,$b],Line2),
+	false = subset([$a,$c,$d],Line1),
+	false = subset([$b,$c,$d],Line2),
+	ok.
+
 on_a_line(P1, P2, P3) ->
 	belong([P1,P2,P3], lines()).
 
@@ -102,3 +111,33 @@ test_on_a_line() ->
 	true = on_a_line($a,$c,$b),
 	false = on_a_line($a,$b,$d),
 	ok.
+
+%% count triangles now
+%% first, formalize the counting process
+
+lines2() ->
+	Line1 = [$a, $b],
+	Line2 = [$a, $c],
+	Line3 = [$b, $c],
+	[Line1, Line2, Line3].
+
+connected2([P1, P2]) ->
+	belong([P1,P2], lines2()).
+
+on_a_line2(P1, P2, P3) ->
+	belong([P1,P2,P3], lines2()).
+
+test4() ->
+	P1 = $a,
+	P2 = $b,
+	P3 = $c,
+	true = triangle(P1, P2, P3),
+	ok.
+
+%% denote triangle() to Erlang 
+%% points P1 P2 P3 forms a triangle
+triangle(P1,P2,P3) ->
+	connected2([P1,P2]) andalso
+	connected2([P1,P3]) andalso
+	connected2([P2,P3]) andalso
+	(not on_a_line2(P1,P2,P3)).
