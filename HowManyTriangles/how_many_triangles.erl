@@ -55,3 +55,50 @@ test_subset2() ->
 
 	true = subset([P4,P3], Line2),
 	ok.
+
+%% given some lines
+%% Line1 = [$a,$c,$b]
+%% Line2 = [$c,$d]
+%% Line3 = ...,
+%% Lines = [Line1, Line2, Line3,...]
+
+%% determin whether P1 P2 is connected
+%%　sub([P1,P2] ,Line1) orelse
+%%  sub([P1,P2] ,Line2) orelse
+%%  sub([P1,P2] ,Line3) orelse
+%%  ...
+
+
+%%  set S1 is a subset of one element of set SS
+%%  SS = [E1, E2, E3,...]
+%%  sub(S1, Ei) == true
+belong(_S1, []) -> false;
+belong(S1, [E|T]) ->
+	subset(S1, E) orelse belong(S1,T).
+
+connected([P1, P2]) ->
+	belong([P1,P2], lines()).
+
+lines() -> 
+	Line1 = [$a,$c,$b],
+	Line2 = [$c,$d],
+	Lines = [Line1, Line2],
+	Lines.
+
+test_connected() ->
+	true = connected([$a,$c]),
+	true = connected([$a,$b]),
+	true = connected([$c,$b]),
+	true = connected([$c,$d]),
+	false = connected([$a,$d]),
+	ok.
+
+%% what does "on_a_line" mean
+%% points P1, P2, P3 is on a line
+on_a_line(P1, P2, P3) ->
+	belong([P1,P2,P3], lines()).
+
+test_on_a_line() ->
+	true = on_a_line($a,$c,$b),
+	false = on_a_line($a,$b,$d),
+	ok.
