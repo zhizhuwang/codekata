@@ -76,21 +76,21 @@ belong(_S1, []) -> false;
 belong(S1, [E|T]) ->
 	subset(S1, E) orelse belong(S1,T).
 
-connected([P1, P2]) ->
-	belong([P1,P2], lines()).
+connected1([P1, P2]) ->
+	belong([P1,P2], lines1()).
 
-lines() -> 
+lines1() -> 
 	Line1 = [$a,$c,$b],
 	Line2 = [$c,$d],
 	Lines = [Line1, Line2],
 	Lines.
 
 test_connected() ->
-	true = connected([$a,$c]),
-	true = connected([$a,$b]),
-	true = connected([$c,$b]),
-	true = connected([$c,$d]),
-	false = connected([$a,$d]),
+	true = connected1([$a,$c]),
+	true = connected1([$a,$b]),
+	true = connected1([$c,$b]),
+	true = connected1([$c,$d]),
+	false = connected1([$a,$d]),
 	ok.
 
 %% what does "on_a_line" mean
@@ -104,12 +104,12 @@ test3() ->
 	false = subset([$b,$c,$d],Line2),
 	ok.
 
-on_a_line(P1, P2, P3) ->
-	belong([P1,P2,P3], lines()).
+on_a_line1(P1, P2, P3) ->
+	belong([P1,P2,P3], lines1()).
 
 test_on_a_line() ->
-	true = on_a_line($a,$c,$b),
-	false = on_a_line($a,$b,$d),
+	true = on_a_line1($a,$c,$b),
+	false = on_a_line1($a,$b,$d),
 	ok.
 
 %% count triangles now
@@ -141,3 +141,132 @@ triangle(P1,P2,P3) ->
 	connected2([P1,P3]) andalso
 	connected2([P2,P3]) andalso
 	(not on_a_line2(P1,P2,P3)).
+
+%% multiple triangles
+
+lines5() ->
+	Line1 = [$a,$d,$b],
+	Line2 = [$a,$c],
+	Line3 = [$c,$d],
+	Line4 = [$c,$b],
+	[Line1,Line2,Line3,Line4].
+
+connected5([P1, P2]) ->
+	belong([P1,P2], lines5()).
+
+on_a_line5(P1, P2, P3) ->
+	belong([P1,P2,P3], lines5()).
+
+triangle5([P1,P2,P3]) ->
+	connected5([P1,P2]) andalso
+	connected5([P1,P3]) andalso
+	connected5([P2,P3]) andalso
+	(not on_a_line5(P1,P2,P3)).
+
+test5() ->
+	true = triangle5([$a,$b,$c]),
+	false = triangle5([$a,$b,$d]),
+	true = triangle5([$a,$c,$d]),
+	true = triangle5([$b,$c,$d]),
+	ok.
+
+
+%% what does it mean?
+%% for points $a, $b ,$c $d,
+%% [$a,$b,$c],[$a,$c,$d],[$d,$b,$c], [$a,$b,$d],...
+
+%% We want all triple points 
+%% that is all combinations of 3 points
+
+com(S,1) -> 
+	[[I]|| I <- S];
+
+com(S,N) when length(S) =:= N -> 
+	[S];
+
+com([H|T],N) ->
+	com(T, N) ++ [[H|I] || I <- com(T,N-1)].
+
+lines6() ->
+	Line1 = [$a,$d,$b],
+	Line2 = [$a,$c],
+	Line3 = [$c,$d],
+	Line4 = [$c,$b],
+	[Line1,Line2,Line3,Line4].
+
+points6() ->
+	[$a, $b, $c, $d].
+
+connected6([P1, P2]) ->
+	belong([P1,P2], lines6()).
+
+on_a_line6(P1, P2, P3) ->
+	belong([P1,P2,P3], lines6()).
+
+triangle6([P1,P2,P3]) ->
+	connected6([P1,P2]) andalso
+	connected6([P1,P3]) andalso
+	connected6([P2,P3]) andalso
+	(not on_a_line6(P1,P2,P3)).
+
+triple_points6() ->
+	com(points6(), 3).
+
+count6() ->
+	Triples = triple_points6(),
+	count6(Triples,0).
+
+count6([],N) -> N;
+
+count6([H|T],N) ->
+	case triangle6(H) of
+		true ->
+			count6(T,N+1);
+	    false ->
+	        count6(T,N)
+	end.
+
+test6() ->
+	3 = count6(),
+	ok.
+
+%% some sugars
+%% [$a,$b,$c,$d] can be represented as "abcd"
+lines() ->
+	["abc","adef","aghi","ajk","bdgj","cehj","cfik"].
+
+points() ->
+	"abcdefghijk".
+
+connected([P1, P2]) ->
+	belong([P1,P2], lines()).
+
+on_a_line(P1, P2, P3) ->
+	belong([P1,P2,P3], lines()).
+
+triangle([P1,P2,P3]) ->
+	connected([P1,P2]) andalso
+	connected([P1,P3]) andalso
+	connected([P2,P3]) andalso
+	(not on_a_line(P1,P2,P3)).
+
+triple_points() ->
+	com(points(), 3).
+
+count() ->
+	Triples = triple_points(),
+	count(Triples,0).
+
+count([],N) -> N;
+
+count([H|T],N) ->
+	case triangle(H) of
+		true ->
+			count(T,N+1);
+	    false ->
+	        count(T,N)
+	end.
+
+test() ->
+	24 = count(),
+	ok.
