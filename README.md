@@ -76,7 +76,7 @@ Reference
     [First Steps with DSL on Java?](http://stackoverflow.com/questions/3305729/first-steps-with-dsl-on-java)    
 
 * Micro Service Architecture   
-  [http://www.infoq.com/cn/news/2013/12/micro-service-architecture](http://www.infoq.com/cn/news/2013/12/micro-service-architecture)   
+  [Microservices](http://martinfowler.com/articles/microservices.html)   
 
 
 * Misc    
