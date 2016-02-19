@@ -40,6 +40,18 @@ def triangles_with_generator():
 
 	return 
 
+def triangles_with_generator():
+	t = [1]
+	i = 0
+
+	while True:
+		if i == 0:
+			yield t
+		else:
+			t = [1] + [t[i]+t[i+1] for i in range(len(t)-1)] + [1]
+			yield t
+		i += 1
+		
 def next_line(prev_line, i):
 	x = [1]
 	j = 1
@@ -53,21 +65,28 @@ def next_line(prev_line, i):
 
 
 def main():
-	print triangles(1)
-	print triangles(2)
-	print triangles(3)
-	print triangles(4)
-	print triangles(5)
-	print triangles(6)
+	print (triangles(1))
+	print (triangles(2))
+	print (triangles(3))
+	print (triangles(4))
+	print (triangles(5))
+	print (triangles(6))
 
 	n = 0
 	for line in triangles_with_generator():
-		print line
+		print (line)
 		n = n + 1
 		if n == 10:
 			break
 
 
 
+	n = 0
+	for t in triangles_with_generator():
+		print(n, t)
+		n = n + 1
+		if n == 10:
+			break
+		
 if __name__ == '__main__':
 	main()
