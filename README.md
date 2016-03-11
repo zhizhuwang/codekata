@@ -66,6 +66,7 @@ Reference
     [icodeit](http://icodeit.org/)    
     [Keep Writing Codes](http://liujiacai.net)    
     [Zhangyi](http://zhangyi.farbox.com/)    
+    [What is code kata](http://www.nginx.cn/4255.html)    
 
 * DSL    
     [Domain-specific language](https://en.wikipedia.org/wiki/Domain-specific_language)    
