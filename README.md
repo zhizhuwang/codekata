@@ -66,6 +66,7 @@ Reference
     [icodeit](http://icodeit.org/)    
     [Keep Writing Codes](http://liujiacai.net)    
     [Zhangyi](http://zhangyi.farbox.com/)    
+    [What is code kata](http://www.nginx.cn/4255.html)    
 
 * DSL    
     [Domain-specific language](https://en.wikipedia.org/wiki/Domain-specific_language)    
@@ -75,8 +76,13 @@ Reference
     [An Approach to Internal Domain-Specific Languages in Java](http://www.infoq.com/articles/internal-dsls-java)   
     [First Steps with DSL on Java?](http://stackoverflow.com/questions/3305729/first-steps-with-dsl-on-java)    
 
+
 * Agile
     [Lean Mindset](http://www.poppendieck.com/)    
+
+* Micro Service Architecture   
+  [Microservices](http://martinfowler.com/articles/microservices.html)    
+  [http://microservices.io](http://microservices.io/)    
 
 
 * Misc    
