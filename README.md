@@ -78,7 +78,7 @@ Reference
     [First Steps with DSL on Java?](http://stackoverflow.com/questions/3305729/first-steps-with-dsl-on-java)    
 
 
-* Agile	
+* Agile	   
     [Lean Mindset](http://www.poppendieck.com/)    
 
 * Micro Service Architecture   
