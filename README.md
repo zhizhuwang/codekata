@@ -28,10 +28,11 @@ Coding Practice
 * [FizzBuzzWhizz](https://github.com/zhizhuwang/codekata/tree/master/FizzBuzzWhizz)     
     Implementation in [C](https://github.com/zhizhuwang/codekata/blob/master/FizzBuzzWhizz/FizzBuzzWhizz.c), [Erlang](https://github.com/zhizhuwang/codekata/blob/master/FizzBuzzWhizz/fizzBuzzWhizz.erl).
 
-* [Eight-queens puzzle]    
+* Eight-queens puzzle   
     Implementation in [Scheme](https://github.com/zhizhuwang/SICP-Solutions/blob/master/ch%202/2.42.rkt).    
 
-
+* [Countdown](http://www.cs.nott.ac.uk/~pszgmh/countdown.pdf)    
+    Implemented in [Erlang](https://github.com/zhizhuwang/codekata/blob/master/Countdown/countdown.erl).    
 
 Reference
 ===========
@@ -77,7 +78,7 @@ Reference
     [First Steps with DSL on Java?](http://stackoverflow.com/questions/3305729/first-steps-with-dsl-on-java)    
 
 
-* Agile
+* Agile	
     [Lean Mindset](http://www.poppendieck.com/)    
 
 * Micro Service Architecture   
