@@ -34,3 +34,12 @@ instance Functor Maybe where
     
 instance Functor [] where 
    fmap = map
+
+
+如果一个类型遵守 Functor laws，我们可以对它作些基本的假设；如果遵守了 Functor laws，我们知道它作fmap不会做多余的事情，只是用一个函数做映射而已。
+
+
+我们可以把Functor看成是具有context的值。
+
+
+如果我们将Functor看成是能输出值的东西，那么可以将mapping over一个Functor看作是在Functor的输出值上再加一次转换，对其输出值进行变换。
