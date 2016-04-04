@@ -43,3 +43,22 @@ instance Functor [] where
 
 
 如果我们将Functor看成是能输出值的东西，那么可以将mapping over一个Functor看作是在Functor的输出值上再加一次转换，对其输出值进行变换。
+
+
+
+Applicative Functor
+<*>  是左结合的。
+class (Functor f) => Applicative f where
+	pure :: a -> f a
+	(<*>) :: f (a -> b) -> f a -> f b
+
+pure, 把一个普通值放到一个最小的context中。 
+<*>， 接受一个装有函数的Functor和另一个Functor，然后取出第一个Functor中的函数对第二个Functor中的值进行map。
+
+Maybe
+List
+
+
+用Applicative style的方式来使用Applicative Functor
+
+
