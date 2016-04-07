@@ -63,4 +63,10 @@ public class StringCalculatorTest {
 
 		c.add("-3");
 	}
+	
+	@Test
+	public void test_numbers_bigger_then_1000_are_ignored()
+	{
+		assertThat(c.add("//;\n1;2;1003"), is(3));
+	}
 }

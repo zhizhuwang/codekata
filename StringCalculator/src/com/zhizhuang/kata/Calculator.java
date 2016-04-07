@@ -26,7 +26,12 @@ public class Calculator {
 				if(i.startsWith("-"))
 					throw new IllegalArgumentException("negative number: " + i);
 				else
+				{
+					int v = Integer.parseInt(i);
+					if(v > 1000)
+						continue;
 				value += Integer.parseInt(i);
+				}
 			return value;
 		}
 	}
