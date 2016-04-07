@@ -10,7 +10,7 @@ public class Calculator {
 			return 0;
 		else
 		{
-			String [] ints = s.split(",");
+			String [] ints = s.split("[,\n]");
 			for(String i:ints)
 				value += Integer.parseInt(i);
 			return value;
