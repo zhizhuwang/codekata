@@ -36,4 +36,16 @@ public class StringCalculatorTest {
 	{
 		assertThat(c.add("1,2\n3"), is(6));
 	}
+	
+	@Test
+	public void test_calculate_multiple_numbers_with_other_delimiters()
+	{
+		assertThat(c.add("1;2\n3"), is(6));
+	}
+	
+	@Test
+	public void test_calculate_multiple_numbers_containing_seperate_line_of_delimiters()
+	{
+		assertThat(c.add("//;\n1;2;3"), is(6));
+	}
 }
