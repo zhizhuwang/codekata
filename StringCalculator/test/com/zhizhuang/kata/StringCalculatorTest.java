@@ -24,4 +24,10 @@ public class StringCalculatorTest {
 	{
 		assertThat(c.add("1,2"), is(3));
 	}
+	
+	@Test
+	public void test_calculate_multiple_numbers()
+	{
+		assertThat(c.add("1,2,3"), is(6));
+	}
 }
