@@ -2,8 +2,18 @@ package com.zhizhuang.kata;
 
 public class Calculator {
 
-	public int calculate(String s)
+	public int add(String s)
 	{
-		return 0;
+		int value = 0;
+		
+		if(s.isEmpty())
+			return 0;
+		else
+		{
+			String [] ints = s.split(",");
+			for(String i:ints)
+				value += Integer.parseInt(i);
+			return value;
+		}
 	}
 }
