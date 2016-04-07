@@ -23,6 +23,9 @@ public class Calculator {
 				ints = s.split("[,\n;]");
 			}
 			for(String i:ints)
+				if(i.startsWith("-"))
+					throw new IllegalArgumentException("negative number: " + i);
+				else
 				value += Integer.parseInt(i);
 			return value;
 		}
