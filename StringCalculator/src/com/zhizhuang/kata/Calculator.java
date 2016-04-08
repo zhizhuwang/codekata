@@ -10,18 +10,7 @@ public class Calculator {
 			return 0;
 		else
 		{
-			String [] ints;
-			if(s.startsWith("//"))
-			{
-				String delimiter = s.substring(2,3);
-				s = s.substring(s.indexOf("\n") + 1);
-				ints = s.split(delimiter);
-				
-			}
-			else
-			{
-				ints = s.split("[,\n;]");
-			}
+			String[] ints = parseIntegers(s);
 			for(String i:ints)
 				if(i.startsWith("-"))
 					throw new IllegalArgumentException("negative number: " + i);
@@ -35,4 +24,20 @@ public class Calculator {
 			return value;
 		}
 	}
+
+    private String[] parseIntegers(String s) {
+        String [] ints;
+        if(s.startsWith("//"))
+        {
+        	String delimiter = s.substring(2,3);
+        	s = s.substring(s.indexOf("\n") + 1);
+        	ints = s.split(delimiter);
+        	
+        }
+        else
+        {
+        	ints = s.split("[,\n;]");
+        }
+        return ints;
+    }
 }
