@@ -67,3 +67,6 @@ Real World Haskell  https://github.com/sancao2/real-world-haskell-cn
 type 用来为一个已有类型声明别名。
 data 用来定义新的数据类型，可以有任意个值构造器。
 newtype 用来封装已有的数据类型，只能有一个值构造器，速度比 data 快。
+
+
+http://blog.leichunfeng.com/blog/2015/11/08/functor-applicative-and-monad/
