@@ -44,6 +44,7 @@ instance Functor [] where
 
 如果我们将Functor看成是能输出值的东西，那么可以将mapping over一个Functor看作是在Functor的输出值上再加一次转换，对其输出值进行变换。
 
+[What is Functor in Haskell] https://segmentfault.com/a/1190000004426762
 
 
 Applicative Functor
@@ -70,3 +71,4 @@ newtype 用来封装已有的数据类型，只能有一个值构造器，速度
 
 
 http://blog.leichunfeng.com/blog/2015/11/08/functor-applicative-and-monad/
+[What is Applicative in Haskell] https://segmentfault.com/a/1190000004569632
