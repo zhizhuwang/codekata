@@ -72,3 +72,23 @@ newtype 用来封装已有的数据类型，只能有一个值构造器，速度
 
 http://blog.leichunfeng.com/blog/2015/11/08/functor-applicative-and-monad/
 [What is Applicative in Haskell] https://segmentfault.com/a/1190000004569632
+
+
+Monoid 
+    http://cnhaskell.com/chp/13.html#monoids
+    一个结构只要满足两个性质便可称为幺半群：
+    1.一个满足结合律的二元操作符。我们称之为 (*)：表达式 a * (b * c) 和 (a * b) * c 结果必须相同。
+    2.一个单位元素。我们称之为 e，它必须遵守两条法则：a * e == a 和 e * a == a。
+    
+    foldMap :: (Monoid m, Foldable t) => (a -> m) -> t a -> m
+    instance F.Foldable Tree where
+        foldMap f Empty = mempty
+        foldMap f (Node x l r) = F.foldMap f l `mappend`
+                                           f x `mappend`
+                                 F.foldMap f r
+
+
+
+foldMap 不只是定义 Foldable 新的 instance 有用。他也对简化我们的结构至单一 monoid 值有用。举例来说，如果我们想要知道我们的树中有没有 3 ，我们可以这样做：
+ghci> getAny $ F.foldMap (\x -> Any $ x == 3) testTree
+True
