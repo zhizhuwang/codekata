@@ -125,3 +125,30 @@ Filtering
                                                     [ c | c <- st,  c `elem` ['A'..'Z']]
 > removeNonUppercase "Hahaha! Ahahaha!"
     "HA"
+
+
+
+Tuple
+(x,y,z)
+一组元素的组合，元素类型可以不同
+长度大于1，且不可变
+List of tuples，用来表示一组相关的元素，例如，表示二维平面上的一组坐标：
+    [ (1,2) , (8,11), (3,5)]
+Pair(含有两个元素的tuple)的常用函数
+fst  
+snd
+
+zip
+取两个 List，然后将它们交叉配对，形成一组pair的 List
+>  zip [1,2,3,4,5] [5,5,5,5,5]
+    [(1,5),(2,5),(3,5),(4,5),(5,5)]
+>  zip [1 .. 5] ["one", "two", "three", "four", "five"]
+    [(1,"one"),(2,"two"),(3,"three"),(4,"four"),(5,"five")]
+
+
+一个示例
+如何取得所有三边长度皆为整数且小于等于 10，周长为 24 的直角三角形？
+> let rightTriangles' = 
+    [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c == 24]
+> rightTriangles'
+    [(6,8,10)]
