@@ -324,3 +324,72 @@ sum' = foldl (+) 0
 fn x = ceiling (negate (tan (cos (max 50 x))))
 fn = ceiling . negate . tan . cos . max 50
 
+函数语法
+
+1模式匹配
+
+sum' :: (Num a) => [a] -> a
+sum' [] = 0
+sum' (x:xs) = x + sum' xs
+
+
+factorial :: (Integral a) => a -> a
+factorial 0 = 1
+factorial n = n * factorial (n - 1)
+
+factorial 3
+3 * (factorial 2)
+3 * (2 * (factorial 1))
+3 * (2 * 1 * (factorial 0))
+3 * 2 * 1 * 1
+6
+
+
+递归在FP中非常重要，FP中没有for while 
+
+
+2. Guards
+max' :: (Ord a) => a -> a -> a
+max' :: a b 
+       | a > b = a
+       | otherwise = b
+
+3.where
+compare' :: (Num a) => a -> a -> a
+compare' a b 
+    | diff > 0 = GT
+    | diff = 0 = EQ
+    | diff < 0 = LT
+    where diff = a - b
+
+4. let
+
+ghci> 4 * (if 10 > 5 then 10 else 0) + 2
+42
+let [bindings] in [expressions]
+ghci> 4 * (let a = 9 in a + 1) + 2
+42
+
+[let square x = x * x in (square 5, square 3, square 2)]
+[(25,9,4)]
+
+ghci> (let (a,b,c) = (1,2,3) in a+b+c) * 100
+600
+
+ghci> let boot x y z = x * y + z in boot 3 4 2
+14
+
+
+Case expressions
+
+模式匹配本质上不过就是 case 语句的语法糖而已。
+
+case expression of pattern -> result
+pattern -> result
+pattern -> result
+...
+
+
+sum' xs = case xs of
+    [] -> 0
+    [x:tail] -> x + sum' tail
