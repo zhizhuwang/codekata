@@ -196,3 +196,131 @@ Haskell是世界上公认的语法最优美最简洁的一种语言。
 本质上，haskell的所有函数都只有一个参数，所有多个参数的函数都是柯里函数。
 
 
+max 3 4
+(max 3) 4
+
+利用不全调用，可以构造新的函数，并作为参数传递给其它函数
+
+
+map  
+
+map :: (a -> b) -> [a] -> [b]
+map _ [] = []
+map f (x:xs) = f x : map f xs
+
+map (+3) [1,5,3,1,6]
+[4,8,6,4,9]
+
+可以与List Comprehension互换
+map (+3) [1,5,3,1,6] 与 [x+3 | x <- [1,5,3,1,6]
+
+filter
+
+filter :: (a -> Bool) -> [a] -> [a]
+filter _ [] = []
+filter p (x:xs)
+| p x = x : filter p xs
+| otherwise = filter p xs
+
+
+ghci> filter (>3) [1,5,3,2,1,6,4,3,2,1]
+[5,6,4]
+List Comprehension:
+[x | x<-[1,5,3,2,1,6,4,3,2,1], x>3]
+
+ghci> filter (`elem` ['a'..'z']) "u LaUgH aT mE BeCaUsE I aM diFfeRent"
+"uagameasadifeent"
+
+
+ghci> sum (takeWhile (<10000) (filter odd (map (^2) [1..])))
+166650
+
+ghci> sum (takeWhile (<10000) [m | m <- [n^2 | n <- [1..]], odd m])
+166650
+
+fold
+
+一个 fold 取一个二元函数，一个初始值(我喜欢管它叫累加值)和一个需要折叠的 List
+foldl foldr
+
+ghci> sum' [3,5,2,1]
+11
+
+sum' :: (Num a) => [a] -> a
+sum' xs = foldl (\acc x -> acc + x) 0 xs
+
+foldr
+map' :: (a -> b) -> [a] -> [b]
+map' f xs = foldr (\x acc -> f x : acc) [] xs
+
+
+lambda
+匿名函数，作为参数传给高阶函数。
+
+map (\x -> x+3) [1,6,3,2]
+
+下面两个等价：
+addThree :: (Num a) => a -> a -> a -> a
+addThree x y z = x + y + z
+
+addThree :: (Num a) => a -> a -> a -> a
+addThree = \x -> \y -> \z -> x + y + z
+
+由于有了Curried functions，大部分匿名函数都可以替换掉。
+map (+3) [1,6,3,2]
+
+
+有$的函数调用
+定义：
+($) :: (a -> b) -> a -> b
+f $ x = f x
+特点：
+右结合，优先级最低
+减少代码中括号的数目
+f (g (z x)) 与 f $ g $ z x 等价
+f a b c 与 ((f a) b) c 等价
+
+sum (map sqrt [1..10]) 。 使用$可以将其改为 sum $ map sqrt [1..10]
+
+sqrt 3 + 4 + 9  vs. sqrt $ 3 + 4 + 9
+
+sum (filter (> 10) (map (*2) [2..10]) 重写为 sum $ filter (> 10) $ map (*2) [2..10]
+
+
+
+
+函数组合
+(.) :: (b -> c) -> (a -> b) -> a -> c
+f . g = \x -> f (g x)
+将一组函数组合起来，形成更加复杂的函数。
+函数组合是右结合的，表达式 f (g (z x)) 与 (f . g . z) x 等价
+
+ghci> map (\x -> negate (abs x)) [5,-3,-6,7,-3,2,-19,24]
+[-5,-3,-6,-7,-3,-2,-19,-24]
+
+ghci> map (negate . abs) [5,-3,-6,7,-3,2,-19,24]
+[-5,-3,-6,-7,-3,-2,-19,-24]
+
+
+map (\xs -> negate (sum (tail xs))) [[1..5],[3..6],[1..7]]
+[-14,-15,-27]
+
+ghci> map (negate . sum . tail) [[1..5],[3..6],[1..7]]
+[-14,-15,-27]
+
+
+多个参数情况下使用函数组合
+sum (replicate 5 (max 6.7 8.9))
+(sum . replicate 5 . max 6.7) 8.9
+sum . replicate 5 . max 6.7 $ 8.9
+
+point free style
+sum' :: (Num a) => [a] -> a
+sum' xs = foldl (+) 0 xs
+改写成：
+sum' = foldl (+) 0
+
+
+fn x = ceiling (negate (tan (cos (max 50 x))))
+fn = ceiling . negate . tan . cos . max 50
+
