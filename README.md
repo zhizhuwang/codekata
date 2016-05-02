@@ -47,6 +47,10 @@ Reference
     [Computer Science Design Patterns](https://en.wikibooks.org/wiki/Computer_Science_Design_Patterns)  
     [OO Design](http://www.oodesign.com/)    
 
+* Programming Language    
+    [Programming and Programming Languages](http://papl.cs.brown.edu/2014/)    
+    
+
 * Functional Programming    
     [Functional Programming Intro](http://coolshell.cn/articles/10822.html)  
     [Functional Programming With Python](http://kachayev.github.io/talks/uapycon2012/#/)    
@@ -57,7 +61,8 @@ Reference
     [Functional programming in Scala](http://adv-r.had.co.nz/Functional-programming.html)    
     [How to write a interpreter](http://www.yinwang.org/blog-cn/2012/08/01/interpreter/)    
     [Why do we need currying](http://luochen1990.me/2015/why-curry/)    
-    [Real World Haskell](https://github.com/sancao2/real-world-haskell-cn)    
+    [Real World Haskell](https://github.com/sancao2/real-world-haskell-cn)   
+    [A Haskell Reading List](http://www.stephendiehl.com/posts/essential_haskell.html)     
     
 
 
@@ -91,6 +96,7 @@ Reference
 
 * Misc    
     container_of(ptr, type, member)    
+    [TO BECOME A GOOD C PROGRAMMER](http://fabiensanglard.net/c/)    
 
 
 
