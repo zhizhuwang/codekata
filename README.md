@@ -76,6 +76,7 @@ Reference
     [Zhangyi](http://zhangyi.farbox.com/)    
     [What is code kata](http://www.nginx.cn/4255.html)    
     [LeetCode Solutions](https://www.gitbook.com/book/siddontang/leetcode-solution/details)    
+    [BLOGS FROM GUANGLEI LI](http://liguanglei.name/blogs/)    
 
 
 * DSL    
