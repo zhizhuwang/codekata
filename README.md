@@ -95,6 +95,8 @@ Reference
   [Microservices](http://martinfowler.com/articles/microservices.html)    
   [http://microservices.io](http://microservices.io/)    
 
+* Java
+  [Guava](http://ifeve.com/google-guava/)    
 
 * Misc    
     container_of(ptr, type, member)    
