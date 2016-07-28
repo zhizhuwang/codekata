@@ -65,5 +65,6 @@ public class QueryTest {
 	{
 		List<Teacher> teachers = Arrays.asList(new Teacher[]{new Teacher("adam", false), new Teacher("elice", true)});
 		assertThat(QueryWorker.find(teachers, t -> t.isFemale()), notNullValue());
+		assertThat(QueryWorker.find(teachers, Teacher::isFemale), notNullValue());
 	}
 }
