@@ -59,4 +59,11 @@ public class QueryTest {
 		List<Student> students = Arrays.asList(new Student[]{new Student("adam", 23), new Student("john", 18)});
 		assertThat(QueryWorker.find(students, stu -> stu.getAge() == 18), notNullValue());
 	}
+	
+	@Test
+	public void query_one_teacher_of_female_in_List()
+	{
+		List<Teacher> teachers = Arrays.asList(new Teacher[]{new Teacher("adam", false), new Teacher("elice", true)});
+		assertThat(QueryWorker.find(teachers, t -> t.isFemale()), notNullValue());
+	}
 }
