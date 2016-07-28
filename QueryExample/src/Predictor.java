@@ -1,5 +1,5 @@
 
-public interface Predictor {
+public interface Predictor<E> {
 
-	public boolean test(Student s);
+	public boolean test(E e);
 }

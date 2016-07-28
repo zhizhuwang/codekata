@@ -1,5 +1,5 @@
 
-public class NamePredictor implements Predictor{
+public class NamePredictor implements StudentPredictor{
 
 	private String name;
 	

@@ -1,5 +1,5 @@
 
-public class AgePredictor implements Predictor {
+public class AgePredictor implements StudentPredictor {
 
 	private int age;
 	
