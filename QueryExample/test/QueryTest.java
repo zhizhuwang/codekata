@@ -34,4 +34,18 @@ public class QueryTest {
 		Student[] students = new Student[]{new Student("adam", 23), new Student("john", 18)};
 		assertThat(QueryWorker.find(students, new AgePredictor(18)), notNullValue());
 	}
+	
+	@Test
+	public void query_one_student_by_name_in_array_with_lambda()
+	{
+		Student[] sdudents = new Student[]{new Student("adam", 23), new Student("john", 18)};
+		assertThat(QueryWorker.find(sdudents, s -> s.getName().equals("john")), notNullValue());
+	}
+	
+	@Test
+	public void query_one_student_by_age_in_array_with_lambda()
+	{
+		Student[] students = new Student[]{new Student("adam", 23), new Student("john", 18)};
+		assertThat(QueryWorker.find(students, stu -> stu.getAge() == 18), notNullValue());
+	}
 }
