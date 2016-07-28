@@ -28,4 +28,13 @@ public class QueryWorker {
 		}
 		return null;
 	}
+	
+	public static Student find(Iterable<Student> sdudents, Predictor namePredictor) {
+		for(Student s: sdudents)
+		{
+			if(namePredictor.test(s))
+				return s;
+		}
+		return null;
+	}
 }

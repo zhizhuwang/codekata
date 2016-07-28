@@ -1,3 +1,7 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -46,6 +50,13 @@ public class QueryTest {
 	public void query_one_student_by_age_in_array_with_lambda()
 	{
 		Student[] students = new Student[]{new Student("adam", 23), new Student("john", 18)};
+		assertThat(QueryWorker.find(students, stu -> stu.getAge() == 18), notNullValue());
+	}
+	
+	@Test
+	public void query_one_student_by_age_in_List()
+	{
+		List<Student> students = Arrays.asList(new Student[]{new Student("adam", 23), new Student("john", 18)});
 		assertThat(QueryWorker.find(students, stu -> stu.getAge() == 18), notNullValue());
 	}
 }
