@@ -76,6 +76,7 @@ Reference
     [Zhangyi](http://zhangyi.farbox.com/)    
     [What is code kata](http://www.nginx.cn/4255.html)    
     [LeetCode Solutions](https://www.gitbook.com/book/siddontang/leetcode-solution/details)    
+    [BLOGS FROM GUANGLEI LI](http://liguanglei.name/blogs/)    
 
 
 * DSL    
@@ -94,6 +95,8 @@ Reference
   [Microservices](http://martinfowler.com/articles/microservices.html)    
   [http://microservices.io](http://microservices.io/)    
 
+* Java
+  [Guava](http://ifeve.com/google-guava/)    
 
 * Misc    
     container_of(ptr, type, member)    
