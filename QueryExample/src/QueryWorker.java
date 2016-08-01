@@ -49,7 +49,16 @@ public class QueryWorker {
 		return null;
 	}
 */	
-	public static <E> E find(Iterable<E> list, Predictor<E> predictor) {
+	/*public static <E> E find(Iterable<E> list, Predictor<E> predictor) {
+		for(E t: list)
+		{
+			if(predictor.test(t))
+				return t;
+		}
+		return null;
+	}*/
+	
+	public static <E> E find(Iterable<? extends E> list, Predictor<? super E> predictor) {
 		for(E t: list)
 		{
 			if(predictor.test(t))
