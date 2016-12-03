@@ -30,7 +30,12 @@ http://www.cnet.com/news/google-home-vs-amazon-echo/
 
 
 2016.11.24
-[机器学习太难？这里有一份详细到周的入门学习计划](http://www.leiphone.com/news/201611/P6ztj6p2tO5IC9MY.html)
-[科大讯飞创始人刘庆峰：17年AI从业经验，从这10000字长文中一窥](http://www.leiphone.com/news/201611/tGzhRwFYBt1earg8.html)
-[Uber 数据科学家灵致看人工智能的“三起两落”](http://www.leiphone.com/news/201611/9tPoziAVhkp2FRmJ.html)
+[机器学习太难？这里有一份详细到周的入门学习计划](http://www.leiphone.com/news/201611/P6ztj6p2tO5IC9MY.html)    
+[科大讯飞创始人刘庆峰：17年AI从业经验，从这10000字长文中一窥](http://www.leiphone.com/news/201611/tGzhRwFYBt1earg8.html)     
+[Uber 数据科学家灵致看人工智能的“三起两落”](http://www.leiphone.com/news/201611/9tPoziAVhkp2FRmJ.html)    
+
+
+[Reinforcement Learning: An Introduction](http://webdocs.cs.ualberta.ca/~sutton/book/ebook/the-book.html)    
+
+
 
