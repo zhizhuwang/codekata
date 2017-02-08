@@ -45,7 +45,9 @@ Reference
 
 * Design Patterns  
     [Computer Science Design Patterns](https://en.wikibooks.org/wiki/Computer_Science_Design_Patterns)  
-    [OO Design](http://www.oodesign.com/)    
+    [OO Design](http://www.oodesign.com/)
+    [图说设计模式](http://design-patterns.readthedocs.io/zh_CN/latest/index.html)    
+
 
 * Programming Language    
     [Programming and Programming Languages](http://papl.cs.brown.edu/2014/)    
