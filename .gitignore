@@ -7,3 +7,4 @@
 *.beam
 *.class
 *.classpath
+*.DS_Store
