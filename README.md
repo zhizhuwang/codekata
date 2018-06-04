@@ -107,7 +107,7 @@ Reference
 * AI    
     [Deep Learning Tutorials](https://github.com/sjchoi86/dl_tutorials)    
 
-* Concurrency
+* Concurrency    
     [AKKA NOTES](https://rerun.me/2014/09/11/introducing-actors-akka-notes-part-1/)
     
     
