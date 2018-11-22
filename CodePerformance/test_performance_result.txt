@@ -1,0 +1,12 @@
+wanghuideAir:dev wanghui$ ./switch_test
+test_if_else ran 928428.000000 usec, result = 2140261267
+test_switch_case run 762526.000000 usec, result = 2140261267
+wanghuideAir:dev wanghui$ ./switch_test_o1
+test_if_else ran 301712.000000 usec, result = 2140261267
+test_switch_case run 262413.000000 usec, result = 2140261267
+wanghuideAir:dev wanghui$ ./switch_test_o2
+test_if_else ran 184361.000000 usec, result = 2140261267
+test_switch_case run 181433.000000 usec, result = 2140261267
+wanghuideAir:dev wanghui$ ./switch_test_o3
+test_if_else ran 184307.000000 usec, result = 2140261267
+test_switch_case run 189037.000000 usec, result = 2140261267
