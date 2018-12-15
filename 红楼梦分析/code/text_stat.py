@@ -154,8 +154,7 @@ def function_word_count():
 
 def main():
 	open_origin_file()
-#	adverb_count()
-	print len('红楼梦分析'.decode('utf-8'))
+	adverb_count()
 	function_word_count()
 
 if __name__ == '__main__':
