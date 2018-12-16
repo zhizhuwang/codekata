@@ -8,7 +8,7 @@ adverb_count_part2 = {'越发':0, '难道':0 ,'可巧':0, '不曾':0,'原是':0}
 adverb_count_part3 = {'越发':0, '难道':0 ,'可巧':0, '不曾':0,'原是':0}
 
 
-def open_origin_file():
+def split_origin_file():
 	first_part = True
 	second_part = False
 	third_part = False;
@@ -154,7 +154,7 @@ def function_word_count():
 	function_word_count_in_part3()
 
 def main():
-	open_origin_file()
+	split_origin_file()
 	adverb_count()
 	function_word_count()
 
