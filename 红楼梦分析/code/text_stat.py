@@ -17,7 +17,8 @@ def open_origin_file():
 	f_part_2 = open('part2.txt', 'w') 
 	f_part_3 = open('part3.txt', 'w')
 
-	with open('../红楼梦.txt', 'r')	as f:
+	filename = ('..'+os.sep+'红楼梦.txt').decode('utf-8')
+	with open(filename, 'r+')	as f:
 		for line in f:
 			if re.match(r'^第四十一回\s+.*$', line):
 				first_part = False
