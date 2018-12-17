@@ -145,7 +145,7 @@ def function_word_count_in_part3():
 	with open('result.txt','a+') as f:
 		f.write("Function word in part3: \n")
 		for (k,v) in function_word_count_part3.items():
-			f.write('{0}:{1}:{2}%\n '.format(k, str(v),str((float)(v)/(float)(total_count)*100)))
+			f.write('{0}:{1}:{2}\n '.format(k, str(v),str((float)(v)/(float)(total_count)*100)))
 		f.write("\n");
 
 def function_word_count():
@@ -153,10 +153,34 @@ def function_word_count():
 	function_word_count_in_part2()
 	function_word_count_in_part3()
 
+
+punctuation_mark = '“”"，．？：《》！`'
+
+def average_paragraph_len_of_file(filename):
+	paragraph_lens = []
+	with open(filename, 'r') as f:
+		for line in f:
+			text = line.decode('utf-8')
+			paragraph_lens.append(len(text))
+			
+	average_paragraph_len = (float)(sum(paragraph_lens)) / (float)(len(paragraph_lens))
+
+	with open('result.txt','a+') as f:
+		f.write("Average paragraph len in {0} is {1}\n".format(filename, (average_paragraph_len)))
+
+
+def average_paragraph_length():
+	average_paragraph_len_of_file('part1.txt')
+	average_paragraph_len_of_file('part2.txt')
+	average_paragraph_len_of_file('part3.txt')
+
+
+
 def main():
-	split_origin_file()
-	adverb_count()
-	function_word_count()
+#	split_origin_file()
+#	adverb_count()
+#	function_word_count()
+	average_paragraph_length()
 
 if __name__ == '__main__':
 	main()
