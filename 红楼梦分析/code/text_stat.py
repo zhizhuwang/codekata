@@ -177,9 +177,9 @@ def average_paragraph_length():
 
 
 def main():
-#	split_origin_file()
-#	adverb_count()
-#	function_word_count()
+	split_origin_file()
+	adverb_count()
+	function_word_count()
 	average_paragraph_length()
 
 if __name__ == '__main__':
