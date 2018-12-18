@@ -45,8 +45,10 @@ def adverb_count_in_part1():
 	with open('part1.txt', 'r') as f:
 		for line in f:
 			for adverb in adverb_count_part1.keys():
-				if(re.search(r''+adverb, line)):
-					adverb_count_part1[adverb] = adverb_count_part1[adverb] + 1
+				li = re.findall(r''+adverb, line)
+				if(len(li) > 0):
+					adverb_count_part1[adverb] = adverb_count_part1[adverb] + len(li)
+
 
 	with open('result.txt','a+') as f:
 		f.write("part1: ")
@@ -59,8 +61,9 @@ def adverb_count_in_part2():
 	with open('part2.txt', 'r') as f:
 		for line in f:
 			for adverb in adverb_count_part1.keys():
-				if(re.search(r''+adverb, line)):
-					adverb_count_part2[adverb] = adverb_count_part2[adverb] + 1
+				li = re.findall(r''+adverb, line)
+				if(len(li) > 0):
+					adverb_count_part2[adverb] = adverb_count_part2[adverb] + len(li)
 
 	with open('result.txt','a+') as f:
 		f.write("part2: ")
@@ -73,8 +76,9 @@ def adverb_count_in_part3():
 	with open('part3.txt', 'r') as f:
 		for line in f:
 			for adverb in adverb_count_part3.keys():
-				if(re.search(r''+adverb, line)):
-					adverb_count_part3[adverb] = adverb_count_part3[adverb] + 1
+				li = re.findall(r''+adverb, line)
+				if(len(li) > 0):
+					adverb_count_part3[adverb] = adverb_count_part3[adverb] + len(li)
 
 	with open('result.txt','a+') as f:
 		f.write("part3: ")
