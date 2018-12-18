@@ -166,7 +166,7 @@ def average_paragraph_len_of_file(filename):
 	average_paragraph_len = (float)(sum(paragraph_lens)) / (float)(len(paragraph_lens))
 
 	with open('result.txt','a+') as f:
-		f.write("Average paragraph len in {0} is {1}\n".format(filename, (average_paragraph_len)))
+		f.write("Average paragraph len in {} is {:.6f}\n".format(filename, (average_paragraph_len)))
 
 
 def average_paragraph_length():
@@ -175,12 +175,33 @@ def average_paragraph_length():
 	average_paragraph_len_of_file('part3.txt')
 
 
+def average_sentence_len_of_file(filename):
+	sentence_lens = []
+	with open(filename, 'r') as f:
+		for line in f:
+			text = line.decode('utf-8')
+			splited_segs = re.split(ur'[，．？！ 　《》\n]+', text.strip())
+			sentences = [s for s in splited_segs if len(s) > 0]
+
+			sentence_lens.extend(map(lambda s : len(s), sentences))
+			
+	average_sentence_len = (float)(sum(sentence_lens)) / (float)(len(sentence_lens))
+
+	with open('result.txt','a+') as f:
+		f.write("Average sentence len in {} is {:.6f}\n".format(filename, (average_sentence_len)))
+
+
+def average_sentence_length():
+	average_sentence_len_of_file('part1.txt')
+	average_sentence_len_of_file('part2.txt')
+	average_sentence_len_of_file('part3.txt')
 
 def main():
 	split_origin_file()
 	adverb_count()
 	function_word_count()
 	average_paragraph_length()
+	average_sentence_length()
 
 if __name__ == '__main__':
 	main()
