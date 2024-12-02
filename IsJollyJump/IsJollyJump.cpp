@@ -21,18 +21,16 @@ bool IsJollyJump(std::vector<int> &v)
 		m[diff] = 1;
 	}
 
-	if (m.size() == v.size() - 1)
-	{
-		for (int j = 1; j < v.size() - 1; j++)
-		{
-			if (m[j] != 1)
-				return false;
-		}
-		return true;
-	}
-	else {
+	if (m.size() != v.size() - 1)
 		return false;
+
+	for (int j = 1; j < v.size() - 1; j++)
+	{
+		if (m[j] != 1)
+			return false;
 	}
+	
+	return true;
 }
 
 
